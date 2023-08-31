@@ -8,11 +8,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const lang = getLangFromUrl(Astro.url);
 
-// import FetchFromDatoCMS from '@Lib/datocms.ts';
-// const data = await FetchFromDatoCMS(lang);
+import FetchFromDatoCMS from '@Lib/datocms.ts';
+const data = await FetchFromDatoCMS(lang);
 // LOCAL DATA!!!
-import LocaleData from '@Lib/localdata';
-const data = await LocaleData(lang);
+// import LocaleData from '@Lib/localdata';
+// const data = await LocaleData(lang);
 ---
 
 <!-- PAGE META TAGS -->
