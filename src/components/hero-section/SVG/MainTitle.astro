@@ -1,7 +1,5 @@
 <svg
   class="header__main-title"
-  width="613"
-  height="244"
   viewBox="0 0 613 254"
   fill="none"
   aria-hidden="true"
@@ -10,7 +8,9 @@
   <text class="main-title_motion" fill="#B3B0FF" xml:space="preserve">
     <tspan x="0.00195312" y="71.4464">GRA</tspan>
   </text>
-  <text stroke="#B3B0FF" xml:space="preserve"><tspan x="207.846" y="71.4464">PHIC</tspan></text>
+  <text stroke="#B3B0FF" xml:space="preserve"
+    ><tspan x="207.846" y="71.4464">PHIC</tspan></text
+  >
   <text stroke="#B3B0FF" xml:space="preserve">
     <tspan x="0.00195312" y="71.4464">GRA</tspan>
   </text>
@@ -20,9 +20,17 @@
   <text class="main-title_motion" fill="#AEE2FF" xml:space="preserve">
     <tspan x="267.877" y="239.75">ION</tspan>
   </text>
-  <text stroke="#AEE2FF" xml:space="preserve"><tspan x="44.002" y="239.75">MOT</tspan></text>
-  <text stroke="#AEE2FF" xml:space="preserve"><tspan x="267.877" y="239.75">ION</tspan></text>
-  <text transform="translate(465 243.628) rotate(-90)" fill="white" xml:space="preserve">
+  <text stroke="#AEE2FF" xml:space="preserve"
+    ><tspan x="44.002" y="239.75">MOT</tspan></text
+  >
+  <text stroke="#AEE2FF" xml:space="preserve"
+    ><tspan x="267.877" y="239.75">ION</tspan></text
+  >
+  <text
+    transform="translate(465 243.628) rotate(-90)"
+    fill="white"
+    xml:space="preserve"
+  >
     <tspan x="0" y="34.9091">DESIGNER</tspan>
   </text>
   <path
@@ -41,7 +49,7 @@
 
   text {
     font-size: var(--font-96);
-    font-family: 'Inter';
+    font-family: "Inter";
     font-weight: bold;
     stroke-width: 2;
     letter-spacing: 0em;
@@ -67,6 +75,13 @@
     }
     35% {
       transform: translate(0, 0);
+    }
+  }
+
+  /* MEDIA QUERIES */
+  @media screen and (max-width: 960px) {
+    .header__main-title {
+      grid-column: 2 / -2;
     }
   }
 </style>

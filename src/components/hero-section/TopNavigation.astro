@@ -1,20 +1,76 @@
 ---
+import CircleBorder from "./SVG/CircleBorder.astro";
+import { getLangFromUrl } from "@Utils/defaultLang.ts";
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<nav class="header__top-nav" aria-label="logo, switch language and mobile navigation">
+<nav
+  class="header__top-nav"
+  aria-label="logo, switch language and mobile navigation"
+>
   <a href="/" class="top-nav__logo color-white">letta</a>
-  <a href="/" class="top-nav__lang-btn color-white">en</a>
-  <a href="/fi" class="top-nav__lang-btn color-white">fi</a>
+  <a
+    href="/en"
+    class=`${lang == 'en' ? 'top-nav__lang-btn color-white active' : 'top-nav__lang-btn color-white'}`
+    >EN <CircleBorder /></a
+  >
+  <a
+    href="/"
+    class=`${lang == 'fi' ? 'top-nav__lang-btn color-white active' : 'top-nav__lang-btn color-white'}`
+    >FI <CircleBorder /></a
+  >
+  <button
+    class="top-nav__hamburger"
+    aria-label="mobile navigation button"
+    title="mobile navigation button"></button>
 </nav>
 
 <style>
   .header__top-nav {
-    grid-column: 2 / 14;
+    grid-column: 2 / -2;
     grid-row: 1;
     align-self: flex-start;
+    align-items: center;
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto auto auto;
     column-gap: var(--gap-16);
     padding-block: var(--gap-24);
+  }
+
+  .top-nav__lang-btn {
+    inline-size: var(--size-48);
+    aspect-ratio: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    transition: all var(--transition-03) ease-in-out;
+  }
+
+  .top-nav__lang-btn:is(:hover, .active) {
+    opacity: 1;
+  }
+
+  /* Path hover effect */
+  .top-nav__lang-btn:is(:hover, .active) :global(.border-cirle-path) {
+    stroke-dashoffset: -40;
+  }
+
+  .top-nav__hamburger {
+    display: none;
+  }
+  /* MEDIA QUERIES */
+  @media (max-width: 960px) {
+    .top-nav__hamburger {
+      display: block;
+      inline-size: var(--size-24);
+      block-size: 3px;
+      background-color: var(--text-white);
+      border-radius: 15px;
+      box-shadow:
+        0 -0.5rem 0 0px var(--text-white),
+        0 0.5rem 0 0px var(--text-white);
+    }
   }
 </style>

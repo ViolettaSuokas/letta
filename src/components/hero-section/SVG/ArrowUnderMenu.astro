@@ -1,5 +1,12 @@
+---
+interface Props {
+  extraClass: "header__arrow-desktop" | "header__arrow-mobile";
+}
+const { extraClass } = Astro.props;
+---
+
 <svg
-  class="header__arrow-menu"
+  class=`${extraClass}`
   width="315"
   height="278"
   viewBox="0 0 315 278"
@@ -16,13 +23,19 @@
 </svg>
 
 <style>
-  .header__arrow-menu {
+  .header__arrow-desktop,
+  .header__arrow-mobile {
     grid-column: 1 / -1;
     grid-row: 1;
-
     position: absolute;
-    inset-inline-start: 30%;
-    inset-block-start: -90%;
+  }
+  .header__arrow-desktop {
+    block-size: 20vh;
+    inset-inline-start: 3vw;
+    inset-block-start: -25vh;
+  }
+  .header__arrow-mobile {
+    display: none;
   }
 
   path {
@@ -33,11 +46,25 @@
     animation: stroke-arrow 1s cubic-bezier(0.41, 0.4, 0.29, 1.16) forwards;
     animation-delay: 1s;
   }
+
   @keyframes stroke-arrow {
     to {
       stroke-dashoffset: 0;
       opacity: 1;
       transform: translateY(0) scale(1);
+    }
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 559px) {
+    .header__arrow-desktop {
+      display: none;
+    }
+    .header__arrow-mobile {
+      block-size: 20vh;
+      display: block;
+      justify-self: center;
+      inset-block-start: 10vh;
     }
   }
 </style>

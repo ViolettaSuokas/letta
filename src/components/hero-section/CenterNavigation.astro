@@ -1,8 +1,8 @@
 ---
-import MenuHover from './SVG/MenuHover.astro';
-import ArrowUnderMenu from './SVG/ArrowUnderMenu.astro';
+import MenuHover from "./SVG/MenuHover.astro";
+import ArrowUnderMenu from "./SVG/ArrowUnderMenu.astro";
 
-import type { INavigation } from '@Types';
+import type { INavigation } from "@Types";
 interface Props extends INavigation {}
 
 const { links } = Astro.props;
@@ -10,10 +10,13 @@ const { links } = Astro.props;
 
 <nav class="header__pc-nav" aria-label="desktop navigation">
   <ul class="pc-nav__links desktop">
-    <ArrowUnderMenu />
+    <ArrowUnderMenu extraClass="header__arrow-desktop" />
     {
-      links.map(link => {
-        const firstPart = link.name.split(link.part).length >= 2 ? link.name.split(link.part)[0] : null;
+      links.map((link) => {
+        const firstPart =
+          link.name.split(link.part).length >= 2
+            ? link.name.split(link.part)[0]
+            : null;
         const styledPart = `${link.part}`;
         const lastPart =
           link.name.split(link.part).length >= 2
@@ -97,6 +100,13 @@ const { links } = Astro.props;
     place-self: center;
     inset-block-end: 0;
     transition: all 0.3s ease-in-out;
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 960px) {
+    .header__pc-nav {
+      display: none;
+    }
   }
 </style>
 

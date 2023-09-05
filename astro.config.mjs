@@ -4,8 +4,8 @@ import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
-  // site: 'https://www.letta.fi',
-  site: 'https://jnetc.github.io',
+  site: 'https://www.letta.fi',
+  // site: 'https://jnetc.github.io',
   // base: '/letta',
   compressHTML: true,
   output: 'server',

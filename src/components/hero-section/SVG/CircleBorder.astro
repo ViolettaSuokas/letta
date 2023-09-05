@@ -1,0 +1,31 @@
+<svg
+  class="border-cirle"
+  viewBox="0 0 72 67"
+  fill="none"
+  aria-hidden
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    class="border-cirle-path"
+    d="M31.4939 1.97705C-0.839939 1.97705 -13.203 48.1228 26.3372 62.2649C72.8783 78.9109 92.1154 1.97705 31.4939 1.97705Z"
+  ></path>
+</svg>
+
+<style is:global>
+  .border-cirle {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .border-cirle-path.active {
+    stroke-dashoffset: -40;
+  }
+
+  .border-cirle-path {
+    stroke: var(--color-purpul);
+    stroke-width: 3;
+    stroke-dasharray: 90;
+    stroke-dashoffset: -70;
+    transition: all var(--transition-03) ease-in-out;
+  }
+</style>
