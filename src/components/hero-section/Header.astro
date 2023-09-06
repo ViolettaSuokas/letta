@@ -35,7 +35,7 @@ const { links, hero } = Astro.props;
     block-size: 100dvh;
     grid-template-rows: auto repeat(3, min-content) auto;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   .header__title,
@@ -99,6 +99,10 @@ const { links, hero } = Astro.props;
 
   /* MEDIA QUERIES */
   @media screen and (max-width: 960px) {
+    .header {
+      block-size: 100%;
+      grid-template-rows: 35vh repeat(3, min-content) 30vh;
+    }
     .header__title,
     .header__button {
       grid-column: 2 / -2;
@@ -108,10 +112,6 @@ const { links, hero } = Astro.props;
   }
 
   @media (max-width: 559px) {
-    .header {
-      block-size: 100vh;
-      margin-block-end: 5rem;
-    }
     .header__daisy-flower {
       grid-column: 5;
       inline-size: 200px;
@@ -119,15 +119,6 @@ const { links, hero } = Astro.props;
     }
     .header__title {
       padding-block: var(--gap-32) var(--gap-48);
-    }
-  }
-
-  @media only screen and (orientation: landscape) and (max-device-height: 860px) {
-    .header {
-      block-size: 110vh;
-      /* grid-template-rows: auto repeat(3, min-content) auto;
-    position: relative;
-    overflow: hidden; */
     }
   }
 </style>

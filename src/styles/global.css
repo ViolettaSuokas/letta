@@ -127,9 +127,8 @@ button {
 }
 
 /* Prevent to show content if orientation & height is valid */
-@media only screen and (orientation: landscape) and (max-device-height: 780px) {
+/* @media only screen and (orientation: landscape) and (max-device-height: 780px) {
   body {
-    padding-block-start: 3rem;
-    row-gap: 10rem;
+
   }
-}
+} */

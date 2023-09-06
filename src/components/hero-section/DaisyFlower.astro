@@ -10,18 +10,19 @@ import DaisyFlowerLeafs from "./SVG/DaisyFlowerLeafs.astro";
 
 <style>
   .header__daisy-flower {
-    grid-column: 11 / 4 span;
-    grid-row: 1 / -1;
-    justify-self: flex-start;
-    align-self: flex-end;
+    inline-size: clamp(180px, 25vw, 360px);
+    aspect-ratio: 1;
+    grid-row: 4 / 2 span;
+    grid-column: 1 / -1;
+    justify-self: flex-end;
+    align-self: center;
     position: absolute;
-    inset-block-start: 65vh;
-    inset-inline-start: 10%;
     opacity: 0;
     animation: show-daisy 0.5s cubic-bezier(0, 0.64, 0.1, 1.08) forwards;
     animation-delay: 2s;
     pointer-events: none;
     z-index: -1;
+    overflow: hidden;
   }
 
   @keyframes show-daisy {
@@ -36,26 +37,29 @@ import DaisyFlowerLeafs from "./SVG/DaisyFlowerLeafs.astro";
   }
 
   /* MEDIA QUERIES */
+  @media screen and (min-width: 1596px) {
+    .header__daisy-flower {
+      grid-column: 10 / span 4;
+    }
+  }
   @media screen and (max-width: 960px) {
     .header__daisy-flower {
-      grid-column: 6;
-      inline-size: 300px;
-      inset-block-start: 65vh;
+      inline-size: clamp(180px, 35vw, 360px);
+      inset-inline-end: -10%;
     }
   }
 
   @media (max-width: 559px) {
     .header__daisy-flower {
-      grid-column: 5;
-      inline-size: 200px;
-      inset-inline-start: 30%;
+      grid-row: 5;
+      inline-size: clamp(180px, 50vw, 360px);
+      inset-inline-end: -15%;
     }
   }
 
-  @media only screen and (orientation: landscape) and (max-device-height: 860px) {
+  @media only screen and (orientation: landscape) and (max-device-height: 960px) {
     .header__daisy-flower {
       inline-size: 200px;
-      inset-block-start: 70vh;
     }
   }
 </style>
