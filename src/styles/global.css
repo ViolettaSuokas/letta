@@ -18,6 +18,11 @@ html {
 body {
   margin-inline: auto;
 }
+/* prevent scroll */
+.body {
+  block-size: 100svh;
+  overflow: hidden;
+}
 
 img,
 picture,

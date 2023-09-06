@@ -1,14 +1,14 @@
 ---
-import Layout from '@Layouts/Layout.astro';
-import Header from '@Components/hero-section/Header.astro';
-import { getLangFromUrl } from '@Utils/defaultLang.ts';
+import Layout from "@Layouts/Layout.astro";
+import Header from "@Components/hero-section/Header.astro";
+import { getLangFromUrl } from "@Utils/defaultLang.ts";
 
 // Example: Construct a canonical URL using your production domain
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const lang = getLangFromUrl(Astro.url);
 
-import FetchFromDatoCMS from '@Lib/datocms.ts';
+import FetchFromDatoCMS from "@Lib/datocms.ts";
 const data = await FetchFromDatoCMS(lang);
 // LOCAL DATA!!!
 // import LocaleData from '@Lib/localdata';
@@ -17,7 +17,7 @@ const data = await FetchFromDatoCMS(lang);
 
 <!-- PAGE META TAGS -->
 <meta name="description" content="Astro description" />
-<!-- <title>{data._site.globalSeo.fallbackSeo.title}</title> -->
+<title>{data._site.globalSeo.fallbackSeo.title}</title>
 <link rel="canonical" href={canonicalURL} />
 
 <!-- PAGE DOM ELEMENTS -->

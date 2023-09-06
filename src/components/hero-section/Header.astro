@@ -16,7 +16,7 @@ const { links, hero } = Astro.props;
 ---
 
 <header class="grid header">
-  <TopNavigation />
+  <TopNavigation links={links.links} />
   <ArrowUnderMenu extraClass="header__arrow-mobile" />
   <MainTitle />
   <h1 class="header__title color-white">
@@ -35,7 +35,7 @@ const { links, hero } = Astro.props;
     block-size: 100dvh;
     grid-template-rows: auto repeat(3, min-content) auto;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   .header__title,
@@ -70,14 +70,14 @@ const { links, hero } = Astro.props;
 
   .header__button::after {
     content: "";
-    position: absolute;
     inline-size: calc(100% + 3px);
     block-size: calc(100% + 3px);
-    inset-block-start: 1.5rem;
-    inset-inline-start: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
     border-color: var(--color-pink);
-    border-width: 4px;
-    border-style: solid;
+    border-width: inherit;
+    border-style: inherit;
     border-radius: inherit;
     transition: all var(--transition-01) ease-in-out;
     pointer-events: none;
@@ -93,8 +93,8 @@ const { links, hero } = Astro.props;
   }
 
   .header__button:active::after {
-    inset-block-start: 1rem;
-    inset-inline-start: 1rem;
+    top: 0.5rem;
+    left: 0.5rem;
   }
 
   /* MEDIA QUERIES */
@@ -115,10 +115,23 @@ const { links, hero } = Astro.props;
     .header__daisy-flower {
       grid-column: 5;
       inline-size: 200px;
-      inset-inline-start: 30%;
+      left: 30%;
     }
     .header__title {
       padding-block: var(--gap-32) var(--gap-48);
+    }
+    .header__button {
+      border-width: 3px;
+    }
+    .header__button::after {
+      top: 0.8rem;
+      left: 0.8rem;
+    }
+  }
+
+  @media only screen and (orientation: landscape) and (max-device-height: 960px) {
+    .header {
+      grid-template-rows: repeat(4, min-context) 1fr;
     }
   }
 </style>

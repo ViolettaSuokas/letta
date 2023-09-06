@@ -9,7 +9,7 @@ const { extraClass } = Astro.props;
   class=`${extraClass}`
   width="315"
   height="278"
-  viewBox="0 0 315 278"
+  viewBox="0 0 335 298"
   fill="none"
   aria-hidden="true"
   xmlns="http://www.w3.org/2000/svg"
@@ -27,12 +27,12 @@ const { extraClass } = Astro.props;
   .header__arrow-mobile {
     grid-column: 1 / -1;
     grid-row: 1;
+    block-size: 20vh;
     position: absolute;
   }
   .header__arrow-desktop {
-    block-size: 20vh;
-    inset-inline-start: 3vw;
-    inset-block-start: -25vh;
+    left: 3vw;
+    top: -25vh;
   }
   .header__arrow-mobile {
     display: none;
@@ -56,15 +56,14 @@ const { extraClass } = Astro.props;
   }
 
   /* MEDIA QUERIES */
-  @media (max-width: 559px) {
+  @media (max-width: 960px) {
     .header__arrow-desktop {
       display: none;
     }
     .header__arrow-mobile {
-      block-size: 20vh;
       display: block;
       justify-self: center;
-      inset-block-start: 10vh;
+      top: 10vh;
     }
   }
 </style>

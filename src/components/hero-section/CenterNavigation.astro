@@ -39,14 +39,14 @@ const { links } = Astro.props;
 </nav>
 
 <style>
-  .header__pc-nav {
+  :global(.header__pc-nav) {
     grid-column: 8 / 14;
     grid-row: 1 / -1;
     place-self: center;
     position: relative;
   }
 
-  .pc-nav__links {
+  :global(.pc-nav__links) {
     display: grid;
     grid-template-columns: auto auto;
     gap: var(--gap-16) var(--gap-8);
@@ -74,10 +74,10 @@ const { links } = Astro.props;
     translate: 0 calc(3rem * 5 + 1rem * 5);
   }
 
-  .pc-nav__link {
+  :global(.pc-nav__link) {
     display: inline-flex;
     font-weight: bold;
-    font-size: var(--font-48);
+    font-size: clamp(var(--font-32), 9vw, var(--font-48));
     transition: all var(--transition-03) ease-in-out;
   }
   .pc-nav__link:hover {
@@ -86,7 +86,7 @@ const { links } = Astro.props;
 
   .pc-nav__link em {
     position: relative;
-    inset-inline-end: 3px;
+    right: 3px;
     font-weight: 400;
     transition: all var(--transition-03) ease-in-out;
   }
@@ -98,7 +98,7 @@ const { links } = Astro.props;
     grid-column: 1;
     grid-row: 1;
     place-self: center;
-    inset-block-end: 0;
+    bottom: 0;
     transition: all 0.3s ease-in-out;
   }
 
@@ -106,6 +106,9 @@ const { links } = Astro.props;
   @media (max-width: 960px) {
     .header__pc-nav {
       display: none;
+    }
+    .header__pc-nav.mobile {
+      display: flex;
     }
   }
 </style>

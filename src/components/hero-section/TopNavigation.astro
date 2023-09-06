@@ -1,32 +1,34 @@
 ---
 import CircleBorder from "./SVG/CircleBorder.astro";
 import { getLangFromUrl } from "@Utils/defaultLang.ts";
+import type { INavigation } from "@Types";
+import TopNavigationMobMenu from "./TopNavigationMobMenu.astro";
+
 const lang = getLangFromUrl(Astro.url);
+interface Props extends INavigation {}
+const { links } = Astro.props;
 ---
 
 <nav
-  class="header__top-nav"
+  class="header__nav"
   aria-label="logo, switch language and mobile navigation"
 >
-  <a href="/" class="top-nav__logo color-white">letta</a>
+  <a href="/" class="nav__logo color-white">letta</a>
   <a
     href="/en"
-    class=`${lang == 'en' ? 'top-nav__lang-btn color-white active' : 'top-nav__lang-btn color-white'}`
+    class=`${lang == 'en' ? 'nav__nav-btn lang-btn color-white active' : 'nav__nav-btn lang-btn color-white'}`
     >EN <CircleBorder /></a
   >
   <a
     href="/"
-    class=`${lang == 'fi' ? 'top-nav__lang-btn color-white active' : 'top-nav__lang-btn color-white'}`
+    class=`${lang == 'fi' ? 'nav__nav-btn lang-btn color-white active' : 'nav__nav-btn lang-btn color-white'}`
     >FI <CircleBorder /></a
   >
-  <button
-    class="top-nav__hamburger"
-    aria-label="mobile navigation button"
-    title="mobile navigation button"></button>
+  <TopNavigationMobMenu links={links} />
 </nav>
 
 <style>
-  .header__top-nav {
+  .header__nav {
     grid-column: 2 / -2;
     grid-row: 1;
     align-self: flex-start;
@@ -37,40 +39,25 @@ const lang = getLangFromUrl(Astro.url);
     padding-block: var(--gap-24);
   }
 
-  .top-nav__lang-btn {
+  /* common button class */
+  :global(.nav__nav-btn) {
     inline-size: var(--size-48);
     aspect-ratio: 1;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.5;
+    display: grid;
+    place-content: center;
     transition: all var(--transition-03) ease-in-out;
   }
+  .lang-btn {
+    opacity: 0.5;
+  }
 
-  .top-nav__lang-btn:is(:hover, .active) {
+  .lang-btn:is(:hover, .active) {
     opacity: 1;
   }
 
   /* Path hover effect */
-  .top-nav__lang-btn:is(:hover, .active) :global(.border-cirle-path) {
+  .lang-btn:is(:hover, .active) :global(.border-cirle-path) {
     stroke-dashoffset: -40;
-  }
-
-  .top-nav__hamburger {
-    display: none;
-  }
-  /* MEDIA QUERIES */
-  @media (max-width: 960px) {
-    .top-nav__hamburger {
-      display: block;
-      inline-size: var(--size-24);
-      block-size: 3px;
-      background-color: var(--text-white);
-      border-radius: 15px;
-      box-shadow:
-        0 -0.5rem 0 0px var(--text-white),
-        0 0.5rem 0 0px var(--text-white);
-    }
   }
 </style>

@@ -1,0 +1,162 @@
+---
+import CenterNavigation from "./CenterNavigation.astro";
+import type { INavigation } from "@Types";
+
+interface Props extends INavigation {}
+const { links } = Astro.props;
+---
+
+<script>
+  const openMenu = document.getElementById("open-menu") as HTMLButtonElement;
+  const closeMenu = document.getElementById("close-menu") as HTMLButtonElement;
+  const menu = document.querySelector(".nav__mob-menu") as HTMLDivElement;
+  const nav = document.querySelector(".header__pc-nav") as HTMLElement;
+  const links = document.querySelector(".pc-nav__links") as HTMLUListElement;
+
+  function openNavigationMenu() {
+    menu.classList.add("show");
+    nav.classList.add("mobile"); // Adding class to the CenterNavigation.astro
+    document.body.classList.add("body");
+  }
+
+  function closeNavigationMenu(event: MouseEvent) {
+    const el = event.target as HTMLElement;
+
+    if (el.closest(".pc-nav__link") || el.closest(".close-menu-btn")) {
+      menu.classList.add("show-hide");
+      menu.classList.remove("show");
+      menu.addEventListener("animationend", onAnimationEnd);
+    }
+  }
+
+  // Separate to new function, because inside the "closeNavigationMenu"
+  // after second click on "openNavigationMenu" also calling 'addEventListener'
+  function onAnimationEnd() {
+    nav.classList.remove("mobile");
+    menu.classList.remove("show-hide");
+    document.body.classList.remove("body");
+    menu.removeEventListener("animationend", onAnimationEnd);
+  }
+
+  openMenu.addEventListener("click", openNavigationMenu);
+  closeMenu.addEventListener("click", closeNavigationMenu, true);
+  links.addEventListener("click", closeNavigationMenu, true);
+</script>
+
+<button
+  id="open-menu"
+  class="nav__nav-btn"
+  aria-label="mobile navigation button"
+  title="mobile navigation button"
+>
+  <span class="nav__hamburger-icon"></span>
+</button>
+
+<div class="nav__mob-menu">
+  <button
+    id="close-menu"
+    class="nav__nav-btn close-menu-btn"
+    aria-label="close menu button"
+    title="close menu button"
+  >
+    <span class="nav__close-icon"></span>
+  </button>
+  <CenterNavigation links={links} />
+</div>
+
+<style>
+  #open-menu {
+    display: none;
+  }
+
+  .nav__mob-menu {
+    display: none;
+    place-content: center;
+    position: fixed;
+    inset: 0;
+    background-color: var(--bg-black);
+    z-index: 999;
+  }
+  .nav__mob-menu.show-hide {
+    animation: hide-mob-menu 0.5s ease-in-out forwards;
+  }
+  .nav__mob-menu.show {
+    display: grid;
+    animation: show-mob-menu 0.5s ease-in-out forwards;
+  }
+
+  .nav__hamburger-icon {
+    inline-size: var(--size-24);
+    block-size: 1px;
+    background-color: var(--text-white);
+    border-radius: 15px;
+    box-shadow:
+      0 -0.5rem 0 0px var(--text-white),
+      0 0.5rem 0 0px var(--text-white);
+  }
+
+  .close-menu-btn {
+    position: absolute;
+    top: var(--gap-24);
+    right: var(--gap-32);
+  }
+  .nav__close-icon {
+    inline-size: var(--size-24);
+    block-size: 2px;
+    background-color: var(--text-white);
+    border-radius: 15px;
+    position: relative;
+    rotate: 45deg;
+    transform-origin: center;
+  }
+  .nav__close-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    inline-size: inherit;
+    block-size: inherit;
+    background-color: inherit;
+    border-radius: inherit;
+    rotate: 90deg;
+  }
+
+  @keyframes show-mob-menu {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+    1% {
+      display: grid;
+      opacity: 0;
+      transform: translateX(-100vw);
+    }
+    100% {
+      display: grid;
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes hide-mob-menu {
+    0% {
+      display: grid;
+      opacity: 1;
+      transform: translateX(0);
+    }
+    99% {
+      display: grid;
+      opacity: 0;
+      transform: translateX(100vw);
+    }
+    100% {
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 960px) {
+    #open-menu {
+      display: grid;
+    }
+  }
+</style>
