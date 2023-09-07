@@ -1,6 +1,6 @@
 ---
 interface Props {
-  extraClass: "header__arrow-desktop" | "header__arrow-mobile";
+  extraClass: "hero__arrow-desktop" | "hero__arrow-mobile";
 }
 const { extraClass } = Astro.props;
 ---
@@ -23,18 +23,18 @@ const { extraClass } = Astro.props;
 </svg>
 
 <style>
-  .header__arrow-desktop,
-  .header__arrow-mobile {
+  .hero__arrow-desktop,
+  .hero__arrow-mobile {
     grid-column: 1 / -1;
     grid-row: 1;
-    block-size: 20vh;
+    block-size: 18vh;
     position: absolute;
   }
-  .header__arrow-desktop {
-    left: 3vw;
-    top: -25vh;
+  .hero__arrow-desktop {
+    left: 2vw;
+    top: -20vh;
   }
-  .header__arrow-mobile {
+  .hero__arrow-mobile {
     display: none;
   }
 
@@ -57,13 +57,14 @@ const { extraClass } = Astro.props;
 
   /* MEDIA QUERIES */
   @media (max-width: 960px) {
-    .header__arrow-desktop {
+    .hero__arrow-desktop {
       display: none;
     }
-    .header__arrow-mobile {
-      display: block;
+    .hero__arrow-mobile {
+      display: none;
       justify-self: center;
-      top: 10vh;
+      inline-size: 30vw;
+      /* top: 10vh; */
     }
   }
 </style>

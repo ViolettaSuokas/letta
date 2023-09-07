@@ -1,0 +1,85 @@
+---
+import CircleBorder from "@SVG/CircleBorder.astro";
+import MobMenu from "@Components/header/MobMenu.astro";
+// Helper function
+import { getLangFromUrl } from "@Utils/defaultLang.ts";
+// Types
+import type { INavigation } from "@Types";
+
+interface Props {
+  links: INavigation;
+}
+
+const { links } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<header class="grid header">
+  <a href="/" class="nav__logo color-white">letta</a>
+  <nav
+    class="header__nav"
+    aria-label="logo, switch language and mobile navigation"
+  >
+    <a
+      href="/en"
+      class=`${lang == 'en'
+      ? 'nav__nav-btn lang-btn color-white active'
+      : 'nav__nav-btn lang-btn color-white'}`
+      >EN<CircleBorder /></a
+    >
+    <a
+      href="/"
+      class=`${lang == 'fi'
+      ? 'nav__nav-btn lang-btn color-white active'
+      : 'nav__nav-btn lang-btn color-white'}`
+      >FI<CircleBorder /></a
+    >
+    <MobMenu links={links.links} />
+  </nav>
+</header>
+
+<style>
+  .nav__logo {
+    grid-column: 2 / 2 span;
+    align-self: flex-start;
+    align-self: center;
+  }
+  .header__nav {
+    grid-column: 4 span / -2;
+    align-self: flex-start;
+    justify-self: flex-end;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+    column-gap: var(--gap-16);
+    padding-block: var(--gap-24);
+  }
+
+  /* common button class */
+  :global(.nav__nav-btn) {
+    inline-size: var(--size-48);
+    aspect-ratio: 1;
+    position: relative;
+    display: grid;
+    place-content: center;
+    transition: all var(--transition-03) ease-in-out;
+  }
+  .lang-btn {
+    opacity: 0.5;
+  }
+
+  .lang-btn:is(:hover, .active) {
+    opacity: 1;
+  }
+
+  /* Path hover effect */
+  .lang-btn:is(:hover, .active) :global(.border-cirle-path) {
+    stroke-dashoffset: -40;
+  }
+
+  @media (max-width: 559px) {
+    .header__nav {
+      padding-block: var(--gap-12);
+    }
+  }
+</style>

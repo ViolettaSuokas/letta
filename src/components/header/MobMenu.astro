@@ -1,16 +1,17 @@
 ---
-import CenterNavigation from "./CenterNavigation.astro";
+import CenterNavigation from "@Components/hero-section/Navigation.astro";
 import type { INavigation } from "@Types";
 
 interface Props extends INavigation {}
 const { links } = Astro.props;
 ---
 
+<!-- CLIENT SIDE JS -->
 <script>
   const openMenu = document.getElementById("open-menu") as HTMLButtonElement;
   const closeMenu = document.getElementById("close-menu") as HTMLButtonElement;
   const menu = document.querySelector(".nav__mob-menu") as HTMLDivElement;
-  const nav = document.querySelector(".header__pc-nav") as HTMLElement;
+  const nav = document.querySelector(".hero__pc-nav") as HTMLElement;
   const links = document.querySelector(".pc-nav__links") as HTMLUListElement;
 
   function openNavigationMenu() {
@@ -43,6 +44,7 @@ const { links } = Astro.props;
   links.addEventListener("click", closeNavigationMenu, true);
 </script>
 
+<!-- HTML TEMPLATE -->
 <button
   id="open-menu"
   class="nav__nav-btn"
@@ -64,6 +66,7 @@ const { links } = Astro.props;
   <CenterNavigation links={links} />
 </div>
 
+<!-- CSS STYLES -->
 <style>
   #open-menu {
     display: none;

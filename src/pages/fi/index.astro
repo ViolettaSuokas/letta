@@ -1,6 +1,13 @@
 ---
 import Layout from "@Layouts/Layout.astro";
-import Header from "@Components/hero-section/Header.astro";
+import Header from "@Components/header/index.astro";
+import HeroSection from "@Components/hero-section/index.astro";
+import AboutSection from "@Components/about-section/index.astro";
+import ServicesSection from "@Components/services-section/index.astro";
+import WorkSection from "@Components/work-section/index.astro";
+import EducationSection from "@Components/education-section/index.astro";
+import ContactSection from "@Components/contact-section/index.astro";
+import Footer from "@Components/footer/index.astro";
 import { getLangFromUrl } from "@Utils/defaultLang.ts";
 
 // Example: Construct a canonical URL using your production domain
@@ -10,8 +17,10 @@ const lang = getLangFromUrl(Astro.url);
 
 import FetchFromDatoCMS from "@Lib/datocms.ts";
 const data = await FetchFromDatoCMS(lang);
+
 // LOCAL DATA!!!
-// import LocaleData from '@Lib/localdata';
+// Remove CACHE folder to get updated data!!!
+// import LocaleData from "@Lib/localdata";
 // const data = await LocaleData(lang);
 ---
 
@@ -22,8 +31,16 @@ const data = await FetchFromDatoCMS(lang);
 
 <!-- PAGE DOM ELEMENTS -->
 <Layout title="Welcome to Astro.">
-  <Header links={data.navigation} hero={data.heroSection} />
-  <main></main>
+  <Header links={data.navigation} />
+  <main>
+    <HeroSection links={data.navigation} hero={data.heroSection} />
+    <AboutSection data={data.aboutSection} />
+    <ServicesSection data={data.servicesSection} />
+    <WorkSection data={data.workSection} />
+    <EducationSection data={data.educationSection} />
+    <ContactSection data={data.contactSection} />
+  </main>
+  <Footer />
 </Layout>
 
 <style></style>

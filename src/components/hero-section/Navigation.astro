@@ -1,16 +1,16 @@
 ---
 import MenuHover from "./SVG/MenuHover.astro";
 import ArrowUnderMenu from "./SVG/ArrowUnderMenu.astro";
-
+// TYPES
 import type { INavigation } from "@Types";
 interface Props extends INavigation {}
 
 const { links } = Astro.props;
 ---
 
-<nav class="header__pc-nav" aria-label="desktop navigation">
+<nav class="hero__pc-nav" aria-label="desktop navigation">
   <ul class="pc-nav__links desktop">
-    <ArrowUnderMenu extraClass="header__arrow-desktop" />
+    <ArrowUnderMenu extraClass="hero__arrow-desktop" />
     {
       links.map((link) => {
         const firstPart =
@@ -39,7 +39,7 @@ const { links } = Astro.props;
 </nav>
 
 <style>
-  :global(.header__pc-nav) {
+  :global(.hero__pc-nav) {
     grid-column: 8 / 14;
     grid-row: 1 / -1;
     place-self: center;
@@ -104,10 +104,10 @@ const { links } = Astro.props;
 
   /* MEDIA QUERIES */
   @media (max-width: 960px) {
-    .header__pc-nav {
+    .hero__pc-nav {
       display: none;
     }
-    .header__pc-nav.mobile {
+    .hero__pc-nav.mobile {
       display: flex;
     }
   }

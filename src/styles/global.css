@@ -80,7 +80,9 @@ textarea {
 }
 
 main {
-  padding-block-start: 9rem;
+  display: grid;
+  row-gap: var(--gap-208);
+  /* padding-block-start: 9rem; */
 }
 button {
   background-color: transparent;
@@ -98,6 +100,9 @@ button {
 .color-white {
   color: var(--text-white);
 }
+.color-light-grey {
+  color: var(--text-light-grey);
+}
 .color-grey {
   color: var(--text-grey);
 }
@@ -114,6 +119,22 @@ button {
   color: var(--color-yellow);
 }
 
+.title {
+  grid-column: 3 / -3;
+  color: var(--text-white);
+  font-size: clamp(var(--font-36), 5vw, var(--font-96));
+  text-transform: uppercase;
+  font-weight: 200;
+  line-height: 1;
+  padding-block-end: var(--gap-48);
+}
+
+.description {
+  grid-column: 3 / -3;
+  color: var(--text-light-grey);
+  font-size: clamp(var(--font-18), 5vw, var(--font-32));
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 960px) {
   :root {
@@ -126,8 +147,12 @@ button {
 }
 
 @media (max-width: 559px) {
-  main {
-    padding-block-start: 5rem;
+  .title {
+    padding-block-end: var(--gap-36);
+  }
+  .title,
+  .description {
+    grid-column: 2 / -2;
   }
 }
 

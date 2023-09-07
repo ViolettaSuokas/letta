@@ -1,0 +1,19 @@
+---
+import type { IAboutSection } from "@Types";
+interface Props {
+  data: IAboutSection;
+}
+
+const { data } = Astro.props;
+---
+
+<section class="grid section">
+  <h2 class="title">
+    {data.title.split(data.part)[0]}
+    <strong class={`color-${data.style}`}>{data.part}</strong>
+    {data.title.split(data.part)[1]}
+  </h2>
+  <p class="description">{data.description}</p>
+</section>
+
+<style></style>

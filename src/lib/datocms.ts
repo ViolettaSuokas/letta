@@ -1,11 +1,11 @@
-import type { IData, LanguagesType } from '@Types';
+import type { IData, LanguagesType } from "@Types";
 
 export default async function FetchFromDatoCMS(lang: LanguagesType) {
-  const response = await fetch('https://graphql.datocms.com/', {
-    method: 'POST',
+  const response = await fetch("https://graphql.datocms.com/", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
+      "Content-Type": "application/json",
+      Accept: "application/json",
       Authorization: `Bearer ${import.meta.env.PUBLIC_DATOCMS_API_KEY}`,
     },
     body: JSON.stringify({
@@ -21,6 +21,25 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
 
             heroSection(locale: ${lang}) {
               ...HeroSectionRecordFragment
+            }
+            aboutSection(locale: ${lang}) {
+              ...AboutSectionRecordFragment
+            }
+
+            servicesSection(locale: ${lang}) {
+              ...ServicesSectionRecordFragment
+            }
+
+            workSection(locale: ${lang}) {
+              ...WorkSectionRecordFragment
+            }
+
+            educationSection(locale: ${lang}) {
+              ...EducationSectionRecordFragment
+            }
+
+            contactSection(locale: ${lang}) {
+              ...ContactSectionRecordFragment
             }
           }
 
@@ -49,6 +68,41 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             name
             style
             title
+          }
+
+          fragment AboutSectionRecordFragment on AboutSectionRecord {
+            title
+            part
+            style
+            description
+          }
+
+          fragment ServicesSectionRecordFragment on ServicesSectionRecord {
+            title
+            part
+            style
+            description
+          }
+
+          fragment WorkSectionRecordFragment on WorkSectionRecord {
+            title
+            part
+            style
+            description
+          }
+
+          fragment EducationSectionRecordFragment on EducationSectionRecord {
+            title
+            part
+            style
+            description
+          }
+
+          fragment ContactSectionRecordFragment on ContactSectionRecord {
+            title
+            part
+            style
+            description
           }
         `,
     }),
