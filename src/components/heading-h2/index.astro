@@ -1,0 +1,15 @@
+---
+import type { TitleType, PartType, StyleType } from "@Types";
+
+interface Data extends TitleType, PartType, StyleType {}
+interface Props {
+  data: Data;
+}
+const { data } = Astro.props;
+---
+
+<h2 class="title">
+  {data.title.split(data.part)[0]}
+  <strong class={`color-${data.style}`}>{data.part}</strong>
+  {data.title.split(data.part)[1]}
+</h2>

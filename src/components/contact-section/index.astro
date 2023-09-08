@@ -1,19 +1,17 @@
 ---
+import HeadingH2 from "@Components/heading-h2/index.astro";
+
 import type { IContactSection } from "@Types";
 interface Props {
   data: IContactSection;
 }
 
-const { data } = Astro.props;
+const { description, ...heading } = Astro.props.data;
 ---
 
-<section class="grid section">
-  <h2 class="title">
-    {data.title.split(data.part)[0]}
-    <strong class={`color-${data.style}`}>{data.part}</strong>
-    {data.title.split(data.part)[1]}
-  </h2>
-  <p class="description">{data.description}</p>
+<section id="contact" class="grid section">
+  <HeadingH2 data={heading} />
+  <p class="description">{description}</p>
 </section>
 
 <style></style>

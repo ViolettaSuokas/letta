@@ -7,10 +7,14 @@
   /* border: 1px solid red; */
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth !important;
+  }
+}
+
 html {
   background-color: var(--bg-black);
-  /* overflow: hidden; */
-  /* overscroll-behavior: contain; */
   scrollbar-gutter: stable;
   overflow-x: hidden;
 }
@@ -47,16 +51,6 @@ ul {
   list-style-type: none;
 }
 
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: bold;
-  line-height: 1;
-} */
-
 p,
 input,
 textarea {
@@ -82,7 +76,6 @@ textarea {
 main {
   display: grid;
   row-gap: var(--gap-208);
-  /* padding-block-start: 9rem; */
 }
 button {
   background-color: transparent;

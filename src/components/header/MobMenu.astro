@@ -26,6 +26,9 @@ const { links } = Astro.props;
     if (el.closest(".pc-nav__link") || el.closest(".close-menu-btn")) {
       menu.classList.add("show-hide");
       menu.classList.remove("show");
+      // Keep removing the class from "body" to prevent strange
+      // behavior in onAnimationEnd function
+      document.body.classList.remove("body");
       menu.addEventListener("animationend", onAnimationEnd);
     }
   }
@@ -35,7 +38,6 @@ const { links } = Astro.props;
   function onAnimationEnd() {
     nav.classList.remove("mobile");
     menu.classList.remove("show-hide");
-    document.body.classList.remove("body");
     menu.removeEventListener("animationend", onAnimationEnd);
   }
 
