@@ -1,0 +1,50 @@
+---
+import { marked } from "marked";
+
+interface Props {
+  data: string;
+  extraClass?: boolean;
+}
+
+const { data, extraClass } = Astro.props;
+const content = marked.parse(data);
+---
+
+<div
+  class={!extraClass
+    ? "description title-description"
+    : "description about-description"}
+  set:html={content}
+/>
+
+<style>
+  .description {
+    grid-column: 3 / -3;
+    block-size: min-content;
+    display: grid;
+    row-gap: var(--gap-16);
+    color: var(--text-light-grey);
+    font-size: clamp(var(--font-24), 1.7vw, var(--font-32));
+    line-height: 1.4;
+  }
+  .title-description {
+    grid-column: 3 / -3;
+  }
+  .about-description {
+    grid-column: 8 / 13;
+  }
+  /* MEDIA QUERIES */
+  @media (max-width: 960px) {
+    .description {
+      font-size: clamp(var(--font-18), 3.5vw, var(--font-24));
+    }
+    .about-description,
+    .title-description {
+      grid-column: 2 / -2;
+    }
+    .about-description {
+      grid-row: 2;
+      padding-block-end: var(--gap-96);
+    }
+  }
+</style>

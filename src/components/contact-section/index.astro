@@ -1,5 +1,6 @@
 ---
 import HeadingH2 from "@Components/heading-h2/index.astro";
+import Description from "@Components/description/index.astro";
 
 import type { IContactSection } from "@Types";
 interface Props {
@@ -11,7 +12,7 @@ const { description, ...heading } = Astro.props.data;
 
 <section id="contact" class="grid section">
   <HeadingH2 data={heading} />
-  <p class="description">{description}</p>
+  <Description data={description} />
 </section>
 
 <style></style>

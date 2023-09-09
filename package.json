@@ -12,7 +12,8 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/vercel": "^4.0.4",
-    "astro": "^3.0.10"
+    "astro": "^3.0.10",
+    "marked": "^8.0.1"
   },
   "devDependencies": {
     "prettier": "^3.0.3",

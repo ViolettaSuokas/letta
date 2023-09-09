@@ -1,0 +1,78 @@
+---
+interface Props {
+  className: "big-star" | "middle-star" | "small-star";
+}
+
+const { className } = Astro.props;
+---
+
+<svg
+  class={className}
+  width="34"
+  height="39"
+  viewBox="0 0 34 39"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg aria-hidden"
+>
+  <path
+    d="M33.6992 19.8901C21.8511 22.8509 19.7692 25.2488 17.1973 38.8901C14.6292 25.2488 12.5474 22.8509 0.699219 19.8901C12.5474 16.9294 14.6292 14.5315 17.2012 0.890137C19.7731 14.5315 21.855 16.9294 33.7031 19.8901H33.6992Z"
+  ></path>
+</svg>
+
+<style>
+  .big-star,
+  .middle-star,
+  .small-star {
+    position: absolute;
+    inline-size: 33px;
+    block-size: 38px;
+    z-index: 10;
+  }
+
+  .big-star {
+    top: -1rem;
+    right: 1rem;
+    fill: var(--color-pink);
+    animation: star 3s ease-in-out infinite;
+  }
+  .middle-star {
+    top: -3rem;
+    right: 2rem;
+    fill: var(--color-purpul);
+    scale: 0.7 0.7;
+    animation: star 3s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+  .small-star {
+    left: -2rem;
+    bottom: -3rem;
+    fill: var(--color-purpul);
+    scale: 0.6 0.6;
+    animation: star 3s ease-in-out infinite;
+    animation-delay: 0.1s;
+  }
+
+  @keyframes star {
+    50% {
+      transform: scale(0.5);
+      opacity: 0.3;
+    }
+  }
+
+  @media (max-width: 559px) {
+    .big-star {
+      top: -7vw;
+      right: -2vw;
+      fill: var(--color-pink);
+      animation: star 3s ease-in-out infinite;
+    }
+    .middle-star {
+      top: -13vw;
+      right: 4vw;
+      fill: var(--color-purpul);
+      scale: 0.7 0.7;
+      animation: star 3s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+  }
+</style>

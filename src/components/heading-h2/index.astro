@@ -4,12 +4,50 @@ import type { TitleType, PartType, StyleType } from "@Types";
 interface Data extends TitleType, PartType, StyleType {}
 interface Props {
   data: Data;
+  extraClass?: boolean;
 }
-const { data } = Astro.props;
+const { data, extraClass } = Astro.props;
 ---
 
-<h2 class="title">
+<h2 class={!extraClass ? "title title-center" : "title about-title"}>
   {data.title.split(data.part)[0]}
   <strong class={`color-${data.style}`}>{data.part}</strong>
   {data.title.split(data.part)[1]}
 </h2>
+
+<style>
+  .title {
+    padding-block-end: var(--gap-48);
+    color: var(--text-white);
+    font-size: clamp(var(--font-48), 5vw, var(--font-96));
+    font-weight: 200;
+    line-height: 1, 4;
+    text-transform: uppercase;
+  }
+  .title-center {
+    grid-column: 3 / -3;
+  }
+  .about-title {
+    grid-column: 8 / 13;
+    align-self: flex-end;
+  }
+  /* MEDIA QUERIES */
+  @media (max-width: 960px) {
+    /* .title {
+      font-size: clamp(var(--font-48), 7vw, var(--font-48));
+    } */
+    .title-center,
+    .about-title {
+      grid-column: 2 / -2;
+    }
+    .about-title {
+      grid-row: 1;
+    }
+  }
+
+  /* @media (max-width: 559px) {
+    .title {
+      display: grid;
+    }
+  } */
+</style>

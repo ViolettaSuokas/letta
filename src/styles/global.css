@@ -88,6 +88,7 @@ button {
   display: grid;
   grid-template-columns: 1fr repeat(12, minmax(0, 6rem)) 1fr;
   column-gap: var(--gap-36);
+  position: relative;
 }
 
 .color-white {
@@ -112,20 +113,8 @@ button {
   color: var(--color-yellow);
 }
 
-.title {
-  grid-column: 3 / -3;
-  color: var(--text-white);
-  font-size: clamp(var(--font-36), 5vw, var(--font-96));
-  text-transform: uppercase;
-  font-weight: 200;
-  line-height: 1;
-  padding-block-end: var(--gap-48);
-}
-
-.description {
-  grid-column: 3 / -3;
-  color: var(--text-light-grey);
-  font-size: clamp(var(--font-18), 5vw, var(--font-32));
+.overflow {
+  overflow: hidden;
 }
 
 /* MEDIA QUERIES */

@@ -1,0 +1,43 @@
+<svg
+  class="about__image-shape"
+  width="122"
+  height="175"
+  viewBox="0 0 122 175"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden
+>
+  <path
+    d="M35.7055 3.63565C-34.0477 58.6933 25.771 144.071 66.1152 133.362C114.786 120.443 68.6021 63.333 44.0172 88.0606C6.7619 125.532 52.6353 185.024 118.189 168.187"
+    stroke="#FEDEFF"
+    stroke-width="6"
+    stroke-linecap="round"></path>
+</svg>
+
+<style>
+  .about__image-shape {
+    grid-column: 2 / 2 span;
+    grid-row: 1 / 3;
+  }
+
+  /* MEDIA QUERIES */
+  @media screen and (max-width: 1365px) {
+    .about__image-shape {
+      display: none;
+    }
+  }
+  @media (max-width: 960px) {
+    .about__image-shape {
+      grid-column: 1 / 2 span;
+      display: block;
+      grid-row: 1 / 4;
+      position: absolute;
+      bottom: 30%;
+    }
+  }
+  @media (max-width: 590px) {
+    .about__image-shape {
+      display: none;
+    }
+  }
+</style>
