@@ -33,9 +33,9 @@ const { data, extraClass } = Astro.props;
   }
   /* MEDIA QUERIES */
   @media (max-width: 960px) {
-    /* .title {
-      font-size: clamp(var(--font-48), 7vw, var(--font-48));
-    } */
+    .title {
+      padding-block-end: var(--gap-36);
+    }
     .title-center,
     .about-title {
       grid-column: 2 / -2;
