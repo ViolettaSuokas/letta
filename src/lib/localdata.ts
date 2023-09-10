@@ -1,9 +1,9 @@
-import fs from 'node:fs'; // 👈 "node:" prefix is an Astro requirement for Node libs
-import FetchFromDatoCMS from './datocms';
-import type { IData, LanguagesType } from '@Types';
+import fs from "node:fs"; // 👈 "node:" prefix is an Astro requirement for Node libs
+import FetchFromDatoCMS from "./datocms";
+import type { IData, LanguagesType } from "@Types";
 
-const CACHE_FOLDER = './.cache';
-const JSON_FILE = './.cache/local.json';
+const CACHE_FOLDER = "./.cache";
+const JSON_FILE = "./.cache/local.json";
 
 export default async function LocaleData(lang: LanguagesType) {
   let data;
@@ -13,13 +13,14 @@ export default async function LocaleData(lang: LanguagesType) {
   }
 
   if (fs.existsSync(JSON_FILE)) {
+    console.info("__________ LOCAL DATA ___________");
     // Read data from file
     const raw = fs.readFileSync(JSON_FILE);
 
     data = JSON.parse(raw as unknown as string);
     return data as IData;
   } else {
-    console.info('__________ DATA FROM LOCALE FILE ___________');
+    console.info("__________ DATA FROM CMS ___________");
 
     data = await FetchFromDatoCMS(lang);
     // Write projects to "caching" file

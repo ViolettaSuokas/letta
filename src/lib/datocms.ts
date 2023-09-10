@@ -82,6 +82,13 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             part
             style
             description
+            services {
+              title
+              style
+              partSecond
+              part
+              description
+            }
           }
 
           fragment WorkSectionRecordFragment on WorkSectionRecord {

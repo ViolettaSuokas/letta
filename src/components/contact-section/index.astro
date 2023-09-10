@@ -2,9 +2,9 @@
 import HeadingH2 from "@Components/heading-h2/index.astro";
 import Description from "@Components/description/index.astro";
 
-import type { IContactSection } from "@Types";
+import type { IContacts } from "@Types";
 interface Props {
-  data: IContactSection;
+  data: IContacts;
 }
 
 const { description, ...heading } = Astro.props.data;

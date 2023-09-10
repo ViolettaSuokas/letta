@@ -1,0 +1,17 @@
+---
+import type { TypeResponsiveImage } from "@Types";
+interface Props {
+  image: TypeResponsiveImage;
+  classExtra: string;
+}
+// Props
+const { image, classExtra } = Astro.props;
+---
+
+<img
+  class={classExtra}
+  src={image.url}
+  alt={image.alt}
+  srcset={image.responsiveImage.srcSet}
+  sizes={image.responsiveImage.sizes}
+/>

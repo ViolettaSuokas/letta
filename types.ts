@@ -8,6 +8,15 @@ export type StyleType = { style: string };
 export type UrlType = { url: string };
 export type HandlerType = { handler: () => void };
 
+export type TypeFavIcon = Omit<TypeResponsiveImage, "responsiveImage">;
+export type TypeResponsiveImage = {
+  alt: string;
+  responsiveImage: {
+    sizes: string;
+    srcSet: string;
+  };
+} & UrlType;
+
 export interface IArticle extends TitleType, DescType {}
 
 export interface ILinks extends NameType, PartType, StyleType {
@@ -17,54 +26,38 @@ export interface INavigation {
   links: Array<ILinks>;
 }
 
-interface IFavicon {
-  image: { url: string };
-}
 interface ISEO {
   globalSeo: {
-    fallbackSeo: IArticle & IFavicon;
+    fallbackSeo: IArticle & TypeFavIcon;
   };
 }
 
-export interface IHeroSection extends TitleType, NameType, StyleType {}
+export interface IHero extends TitleType, NameType, StyleType {}
 
-export interface IAboutSection
-  extends TitleType,
-    PartType,
-    StyleType,
-    DescType {}
+export interface IAbout extends TitleType, PartType, StyleType, DescType {
+  image: TypeResponsiveImage;
+}
 
-export interface IServicesSection
-  extends TitleType,
-    PartType,
-    StyleType,
-    DescType {}
+export interface IService extends TitleType, PartType, StyleType, DescType {
+  partSecond: string;
+}
+export interface IServices extends TitleType, PartType, StyleType, DescType {
+  services: Array<IService>;
+}
 
-export interface IWorkSection
-  extends TitleType,
-    PartType,
-    StyleType,
-    DescType {}
+export interface IWorks extends TitleType, PartType, StyleType, DescType {}
 
-export interface IEducationSection
-  extends TitleType,
-    PartType,
-    StyleType,
-    DescType {}
+export interface IEducations extends TitleType, PartType, StyleType, DescType {}
 
-export interface IContactSection
-  extends TitleType,
-    PartType,
-    StyleType,
-    DescType {}
+export interface IContacts extends TitleType, PartType, StyleType, DescType {}
 
 export interface IData {
   _site: ISEO;
   navigation: INavigation;
-  heroSection: IHeroSection;
-  aboutSection: IAboutSection;
-  servicesSection: IServicesSection;
-  workSection: IWorkSection;
-  educationSection: IEducationSection;
-  contactSection: IContactSection;
+  heroSection: IHero;
+  aboutSection: IAbout;
+  servicesSection: IServices;
+  workSection: IWorks;
+  educationSection: IEducations;
+  contactSection: IContacts;
 }

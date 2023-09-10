@@ -1,0 +1,85 @@
+---
+import DaisyFlowerFace from "./SVG/DaisyFlowerFace.astro";
+import DaisyFlowerLeafs from "./SVG/DaisyFlowerLeafs.astro";
+import TitleLine from "./TitleLine.astro";
+// Types
+import type { IService } from "@Types";
+interface Props {
+  data: IService;
+}
+// Props
+const { data } = Astro.props;
+// Code
+const first = data.title.split(" ")[0];
+const second = data.title.split(" ")[1];
+---
+
+<li
+  class={`service border-${data.style}`}
+  style=`border-image-source: url(/svg/service_border_${data.style}.svg);`
+>
+  <h3 class="service__title color-white">
+    <TitleLine title={first} splitPart={data.part} color={data.style} />
+    <TitleLine title={second} splitPart={data.partSecond} color={data.style} />
+  </h3>
+  <p class="service__txt color-grey">{data.description}</p>
+  <div class="service__flower">
+    <DaisyFlowerLeafs color={data.style} />
+    <DaisyFlowerFace />
+  </div>
+</li>
+
+<style>
+  .service {
+    max-inline-size: 460px;
+    aspect-ratio: 1 / 0.9;
+    display: grid;
+    place-content: center;
+    row-gap: var(--gap-36);
+    position: relative;
+    padding-inline: var(--gap-56);
+    border: 6px solid red;
+    border-image-slice: 40;
+    border-image-width: 2.25rem;
+  }
+
+  :global(.service__title) {
+    display: grid;
+    font-size: clamp(var(--font-36), 4.5vw, var(--font-56));
+    font-weight: 200;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  :global(.service__title span:last-child) {
+    padding-inline-start: clamp(var(--gap-18), 2vw, var(--gap-48));
+  }
+
+  .service__txt {
+    max-inline-size: calc(100% - 2rem);
+    font-size: clamp(var(--font-18), 2vw, var(--font-24));
+  }
+
+  .service__flower {
+    --flower-size: clamp(80px, 10vw, 110px);
+    inline-size: var(--flower-size);
+    aspect-ratio: 1;
+    display: flex;
+    position: absolute;
+    right: calc(-1 * (var(--flower-size) / 2.5));
+    top: calc(-1 * (var(--flower-size) / 2.5));
+    z-index: 3;
+  }
+
+  @media screen and (max-width: 800px) {
+    .service {
+      max-inline-size: 340px;
+      padding-inline: clamp(var(--gap-12), 4vw, var(--gap-56));
+    }
+  }
+
+  @media screen and (max-width: 680px) {
+    .service__flower {
+      --flower-size: clamp(80px, 22vw, 110px);
+    }
+  }
+</style>

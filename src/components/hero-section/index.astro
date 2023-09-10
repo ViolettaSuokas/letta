@@ -4,11 +4,11 @@ import MainTitle from "./SVG/MainTitle.astro";
 import DaisyFlower from "./DaisyFlower.astro";
 import ArrowUnderMenu from "./SVG/ArrowUnderMenu.astro";
 
-import type { INavigation, IHeroSection } from "@Types";
+import type { INavigation, IHero } from "@Types";
 
 interface Props {
   links: INavigation;
-  hero: IHeroSection;
+  hero: IHero;
 }
 
 const { links, hero } = Astro.props;

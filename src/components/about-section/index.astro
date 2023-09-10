@@ -1,21 +1,17 @@
 ---
-// import { Image } from "astro:assets";
 import HeadingH2 from "@Components/heading-h2/index.astro";
 import Description from "@Components/description/index.astro";
 import Star from "./SVG/Star.astro";
 import ImageShape from "./SVG/ImageShape.astro";
 import TextShape from "./SVG/TextShape.astro";
+// import Img from "./Img.astro";
 // Types
-import type { IAboutSection } from "@Types";
+import type { IAbout } from "@Types";
 interface Props {
-  data: IAboutSection;
+  data: IAbout;
 }
 // Props
-const { description, ...heading } = Astro.props.data;
-
-// const size = 100;
-// const rocket1x = await getImage({ src: rocket, width: size });
-// const rocket2x = await getImage({ src: rocket, width: size * 2 });
+const { description, image, ...heading } = Astro.props.data;
 ---
 
 <section id="about" class="grid overflow about">
@@ -25,6 +21,7 @@ const { description, ...heading } = Astro.props.data;
     <Star className="big-star" />
     <Star className="middle-star" />
     <Star className="small-star" />
+    <!-- <Img image={image} classExtra="about__photo" /> -->
     <img class="about__photo" src="/photo.png" alt="Violetta" />
   </div>
   <TextShape />

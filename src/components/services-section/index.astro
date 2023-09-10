@@ -1,18 +1,41 @@
 ---
 import HeadingH2 from "@Components/heading-h2/index.astro";
 import Description from "@Components/description/index.astro";
-
-import type { IServicesSection } from "@Types";
+import Service from "./Service.astro";
+// Types
+import type { IServices } from "@Types";
 interface Props {
-  data: IServicesSection;
+  data: IServices;
 }
-
-const { description, ...heading } = Astro.props.data;
+// Props
+const { description, services, ...heading } = Astro.props.data;
 ---
 
-<section id="services" class="grid section">
+<section id="services" class="grid overflow services">
   <HeadingH2 data={heading} />
   <Description data={description} />
+  <ul class="services__list">
+    {services.map((service) => <Service data={service} />)}
+  </ul>
 </section>
 
-<style></style>
+<style>
+  .services__list {
+    grid-column: 3 / -3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-96) var(--gap-32);
+    justify-items: center;
+  }
+
+  @media screen and (max-width: 1280px) {
+    .services__list {
+      grid-column: 2 / -2;
+    }
+  }
+  @media screen and (max-width: 680px) {
+    .services__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

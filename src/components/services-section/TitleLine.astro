@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+  splitPart: string;
+  color: string;
+}
+// Props
+const { title, splitPart, color } = Astro.props;
+// Code
+const splitted = title.split(splitPart);
+---
+
+<span>
+  {splitted[0]}<strong class={`color-${color}`}>{splitPart}</strong>{
+    splitted[1].length === 0 ? null : splitted[1]
+  }
+</span>
