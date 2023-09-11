@@ -4,6 +4,7 @@ import Description from "@Components/description/index.astro";
 import Service from "./Service.astro";
 // Types
 import type { IServices } from "@Types";
+import ServiceShape from "./SVG/ServiceShape.astro";
 interface Props {
   data: IServices;
 }
@@ -17,6 +18,7 @@ const { description, services, ...heading } = Astro.props.data;
   <ul class="services__list">
     {services.map((service) => <Service data={service} />)}
   </ul>
+  <ServiceShape />
 </section>
 
 <style>

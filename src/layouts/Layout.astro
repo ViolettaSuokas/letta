@@ -1,18 +1,18 @@
 ---
-import { getLangFromUrl } from '@Utils/defaultLang.ts';
+import { getLangFromUrl } from "@Utils/defaultLang.ts";
 const lang = getLangFromUrl(Astro.url);
 
-import '@Styles/variable.css';
-import '@Styles/fonts.css';
-import '@Styles/global.css';
+import "@Styles/variable.css";
+import "@Styles/fonts.css";
+import "@Styles/global.css";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
