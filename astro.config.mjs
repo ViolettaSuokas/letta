@@ -12,7 +12,7 @@ export default defineConfig({
   output: "server",
   adapter: vercel(),
   build: {
-    inlineStylesheets: `auto`,
+    inlineStylesheets: `always`,
   },
   // image: {
   // Example: Allow remote image optimization from a single domain
