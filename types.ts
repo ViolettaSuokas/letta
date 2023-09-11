@@ -45,11 +45,20 @@ export interface IServices extends TitleType, PartType, StyleType, DescType {
   services: Array<IService>;
 }
 
-export interface IWorks extends TitleType, PartType, StyleType, DescType {}
+export interface IWork extends NameType, UrlType, StyleType {}
+export interface IWorks extends TitleType, PartType, StyleType, DescType {
+  works: Array<IWork>;
+}
 
-export interface IEducations extends TitleType, PartType, StyleType, DescType {}
+export interface IEducation extends TitleType, StyleType, DescType {}
+export interface IEducations extends TitleType, PartType, StyleType, DescType {
+  eduvation: Array<IEducation>;
+}
 
-export interface IContacts extends TitleType, PartType, StyleType, DescType {}
+export interface IContact extends UrlType, StyleType {}
+export interface IContacts extends TitleType, PartType, StyleType, DescType {
+  contacts: Array<IContact>;
+}
 
 export interface IData {
   _site: ISEO;

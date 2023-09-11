@@ -20,34 +20,27 @@ const { color } = Astro.props;
   ></path>
 </svg>
 
-<style>
+<style is:global>
   .daisy-flower {
     position: absolute;
     inset: 0;
     animation:
-      5s ease-in-out infinite flower-pop,
+      4s cubic-bezier(0, 0.42, 0.38, 1.33) infinite flower-pop,
       30s linear infinite flower;
     z-index: -1;
   }
 
-  .fill-purpul {
-    fill: var(--color-purpul);
-    animation-delay: 5s, 0s;
+  li:nth-of-type(1) .daisy-flower {
+    animation-delay: 0s, 0s;
   }
-
-  .fill-blue {
-    fill: var(--color-blue);
-    animation-delay: 6s, 0s;
+  li:nth-of-type(2) .daisy-flower {
+    animation-delay: 1s, 0s;
   }
-
-  .fill-pink {
-    fill: var(--color-pink);
-    animation-delay: 7s, 0s;
+  li:nth-of-type(3) .daisy-flower {
+    animation-delay: 2s, 0s;
   }
-
-  .fill-yellow {
-    fill: var(--color-yellow);
-    animation-delay: 8s, 0s;
+  li:nth-of-type(4) .daisy-flower {
+    animation-delay: 3s, 0s;
   }
 
   @keyframes flower {
@@ -56,11 +49,14 @@ const { color } = Astro.props;
     }
   }
   @keyframes flower-pop {
-    90% {
+    70% {
       scale: 1;
     }
-    95% {
+    80% {
       scale: 1.1;
+    }
+    95% {
+      scale: 0.9;
     }
     100% {
       scale: 1;

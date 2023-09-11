@@ -1,18 +1,48 @@
 ---
 import HeadingH2 from "@Components/heading-h2/index.astro";
 import Description from "@Components/description/index.astro";
-
+import Work from "./Work.astro";
+// Types
 import type { IWorks } from "@Types";
 interface Props {
   data: IWorks;
 }
-
-const { description, ...heading } = Astro.props.data;
+// Props
+const { description, works, ...heading } = Astro.props.data;
 ---
 
 <section id="work" class="grid section">
   <HeadingH2 data={heading} />
   <Description data={description} />
+  <ul class="works__list">
+    {works.map((work, index) => <Work data={work} index={index + 1} />)}
+  </ul>
 </section>
 
-<style></style>
+<style>
+  .works__list {
+    grid-column: 3 / -3;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 360px));
+    gap: var(--gap-72) var(--gap-16);
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 1420px) {
+    .works__list {
+      /* grid-column: 2 / -2; */
+      justify-content: space-around;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    .works__list {
+      grid-column: 2 / -2;
+      /* justify-content: space-between; */
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .works__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

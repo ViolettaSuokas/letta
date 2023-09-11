@@ -1,0 +1,91 @@
+---
+// Types
+import type { IWork } from "@Types";
+import FolderMore from "./FolderMore.astro";
+import FolderProject from "./FolderProject.astro";
+interface Props {
+  data: IWork;
+  index: number;
+}
+// Props
+const { data, index } = Astro.props;
+---
+
+<li class="work">
+  {
+    data.style.length > 0 ? (
+      <span class={`work__index color-${data.style}`}>0{index}</span>
+    ) : null
+  }
+  <h3 class="work__name color-light-grey">
+    {data.name}
+  </h3>
+  <a
+    class="work__link"
+    href={data.url}
+    title={data.name}
+    aria-label={data.name}
+  >
+    {
+      data.style.length > 0 ? (
+        <FolderProject extraClass={data.style} />
+      ) : (
+        <FolderMore />
+      )
+    }
+  </a>
+</li>
+
+<style>
+  .work {
+    --folder-size: clamp(260px, 40vw, 360px);
+    inline-size: var(--folder-size);
+    aspect-ratio: 1 / 0.7;
+    display: grid;
+    position: relative;
+    padding-inline: var(--gap-72);
+    justify-self: center;
+  }
+
+  .work__link {
+    position: absolute;
+    inset: 0;
+  }
+  .work__index {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-size: clamp(var(--font-24), 4vw, var(--font-36));
+    font-weight: bold;
+    padding-block-end: 3rem;
+  }
+
+  .work__name {
+    font-size: clamp(var(--font-24), 4vw, var(--font-36));
+    text-transform: uppercase;
+    font-weight: 200;
+    align-self: flex-end;
+    position: relative;
+    bottom: 16%;
+  }
+
+  :global(.work__folder) {
+    position: absolute;
+    inset: 0;
+    stroke-width: 6;
+    z-index: -1;
+  }
+
+  @media screen and (max-width: 800px) {
+    .work {
+      --folder-size: clamp(320px, 45vw, 360px);
+    }
+    .work__index {
+      font-size: clamp(var(--font-32), 4.5vw, var(--font-36));
+    }
+
+    .work__name {
+      font-size: clamp(var(--font-32), 4.5vw, var(--font-36));
+    }
+  }
+</style>

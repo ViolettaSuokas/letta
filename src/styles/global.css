@@ -112,6 +112,40 @@ button {
 .color-yellow {
   color: var(--color-yellow);
 }
+.color-ocean {
+  color: var(--color-ocean);
+}
+.fill-purpul {
+  fill: var(--color-purpul);
+}
+.fill-blue {
+  fill: var(--color-blue);
+}
+.fill-pink {
+  fill: var(--color-pink);
+}
+.fill-yellow {
+  fill: var(--color-yellow);
+}
+.fill-ocean {
+  fill: var(--color-ocean);
+}
+
+.stroke-purpul {
+  stroke: var(--color-purpul);
+}
+.stroke-blue {
+  stroke: var(--color-blue);
+}
+.stroke-pink {
+  stroke: var(--color-pink);
+}
+.stroke-yellow {
+  stroke: var(--color-yellow);
+}
+.stroke-ocean {
+  stroke: var(--color-ocean);
+}
 
 .overflow {
   overflow: hidden;

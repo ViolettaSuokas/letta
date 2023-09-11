@@ -96,6 +96,11 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             part
             style
             description
+            works {
+              url
+              name
+              style
+            }
           }
 
           fragment EducationSectionRecordFragment on EducationSectionRecord {
@@ -103,6 +108,11 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             part
             style
             description
+            educations {
+              style
+              title
+              description
+            }
           }
 
           fragment ContactSectionRecordFragment on ContactSectionRecord {
@@ -110,6 +120,10 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             part
             style
             description
+            contacts {
+              style
+              url
+            }
           }
         `,
     }),
