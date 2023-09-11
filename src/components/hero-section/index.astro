@@ -30,11 +30,9 @@ const { links, hero } = Astro.props;
 
 <style>
   .hero {
-    /* block-size: 100dvh; */
     grid-template-rows: 20vh repeat(3, min-content) 250px;
     position: relative;
     overflow: hidden;
-    /* contain: style; */
   }
 
   .hero__title,
@@ -59,12 +57,16 @@ const { links, hero } = Astro.props;
     position: relative;
     top: 0;
     background-color: var(--bg-black);
-    border-color: var(--color-purpul);
-    border-width: 4px;
+
+    border-color: hsl(242 100% 85% / 0.5);
+    border-width: 3px;
     border-style: solid;
     border-radius: var(--border-corner-16);
+    box-shadow: inset 0 0 0 0 var(--color-purpul);
     text-transform: uppercase;
-    transition: all var(--transition-01) ease-in-out;
+    transition:
+      top var(--transition-01) ease-in-out,
+      border var(--transition-03) ease-in-out;
   }
 
   .hero__button::after {
@@ -78,7 +80,10 @@ const { links, hero } = Astro.props;
     border-width: inherit;
     border-style: inherit;
     border-radius: inherit;
-    transition: all var(--transition-01) ease-in-out;
+    transition:
+      top var(--transition-01) ease-in-out,
+      left var(--transition-01) ease-in-out,
+      border-color var(--transition-03) ease-in-out;
     pointer-events: none;
     z-index: -1;
   }
@@ -88,19 +93,22 @@ const { links, hero } = Astro.props;
   }
 
   .hero__button:hover {
-    color: var(--color-purpul);
+    border-color: var(--color-purpul);
   }
 
+  .hero__button:hover::after {
+    border-color: hsl(298 100% 94% / 0.5);
+  }
   .hero__button:active::after {
     top: 0.5rem;
     left: 0.5rem;
+    border-color: hsl(298 100% 94% / 0.5);
   }
 
   /* MEDIA QUERIES */
   @media screen and (max-width: 960px) {
     .hero {
       block-size: 100%;
-      /* grid-template-rows: 35vh repeat(3, min-content) 30vh; */
     }
     .hero__title,
     .hero__button {

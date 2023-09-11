@@ -54,10 +54,15 @@ const { data, index } = Astro.props;
   .work__index {
     position: absolute;
     top: 10%;
-    left: 10%;
+    left: 6%;
+    padding-inline: 0.5rem;
+    background-color: black;
     font-size: clamp(var(--font-24), 4vw, var(--font-36));
     font-weight: bold;
-    padding-block-end: 3rem;
+    transition: transform var(--transition-03) ease-in-out;
+  }
+  .work:hover .work__index {
+    transform: translateY(-100%) scale(1.2);
   }
 
   .work__name {
@@ -72,8 +77,13 @@ const { data, index } = Astro.props;
   :global(.work__folder) {
     position: absolute;
     inset: 0;
-    stroke-width: 6;
+    stroke-width: 3;
+    transition: all 0.3s ease-in-out;
     z-index: -1;
+  }
+
+  .work:hover :global(.work__folder) {
+    stroke-width: 6;
   }
 
   @media screen and (max-width: 800px) {
