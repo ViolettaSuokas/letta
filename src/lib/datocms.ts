@@ -111,6 +111,7 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             educations {
               style
               title
+              part
               description
             }
           }
@@ -123,6 +124,7 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             contacts {
               style
               url
+              icon
             }
           }
         `,

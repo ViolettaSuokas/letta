@@ -1,4 +1,5 @@
 export type LanguagesType = "fi" | "en";
+export type IconType = "email" | "behance" | "linkedin" | "instagram";
 export type IDType = { id: string };
 export type TitleType = { title: string };
 export type DescType = { description: string };
@@ -50,12 +51,14 @@ export interface IWorks extends TitleType, PartType, StyleType, DescType {
   works: Array<IWork>;
 }
 
-export interface IEducation extends TitleType, StyleType, DescType {}
+export interface IEducation extends TitleType, PartType, StyleType, DescType {}
 export interface IEducations extends TitleType, PartType, StyleType, DescType {
-  eduvation: Array<IEducation>;
+  educations: Array<IEducation>;
 }
 
-export interface IContact extends UrlType, StyleType {}
+export interface IContact extends UrlType, StyleType {
+  icon: IconType;
+}
 export interface IContacts extends TitleType, PartType, StyleType, DescType {
   contacts: Array<IContact>;
 }

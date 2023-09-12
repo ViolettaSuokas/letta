@@ -2,6 +2,30 @@
 
 ---
 
-<footer>Copyright © {new Date().getFullYear()} Letta</footer>
+<footer class="grid footer">
+  <svg viewBox="0 0 654 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M3.11914 57.2014C108.125 22.3157 276.698 -5.04387 354.44 5.30533C462.777 15.1175 236.292 12.1137 258.713 31.2192C280.948 46.3577 538.526 0.547278 650.882 19.3273"
+      stroke="#AEE2FF"
+      stroke-width="6"
+      stroke-linecap="round"></path>
+  </svg>
+  <p class="color-grey">Copyright © {new Date().getFullYear()} Letta</p>
+</footer>
 
-<style></style>
+<style>
+  .footer {
+    justify-items: center;
+    padding-block: var(--gap-48) var(--gap-16);
+    row-gap: var(--gap-48);
+  }
+  .footer :where(p, svg) {
+    grid-column: 2 / -2;
+  }
+  .footer svg {
+    max-width: 650px;
+  }
+  .footer p {
+    font-size: clamp(var(--font-16), 2.5vw, var(--font-20));
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+import EmailIcon from "./SVG/EmailIcon.astro";
+import BehanceIcon from "./SVG/BehanceIcon.astro";
+import LinkedInIcon from "./SVG/LinkedInIcon.astro";
+import InstagramIcon from "./SVG/InstagramIcon.astro";
+// Types
+import type { UrlType, StyleType, IconType } from "@Types";
+interface Data extends UrlType, StyleType {
+  icon: IconType;
+}
+interface Props {
+  data: Data;
+}
+// Props
+const { url, style, icon } = Astro.props.data;
+---
+
+<a href={url} class={`contact__icon stroke-${style}`}>
+  {icon === "email" ? <EmailIcon style={style} /> : null}
+  {icon === "behance" ? <BehanceIcon style={style} /> : null}
+  {icon === "linkedin" ? <LinkedInIcon style={style} /> : null}
+  {icon === "instagram" ? <InstagramIcon style={style} /> : null}
+  <svg
+    class={`contact__icon-border stroke-${style}`}
+    viewBox="0 0 143 132"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden
+  >
+    <path
+      d="M63.054 3.97314C-1.4573 3.97314 -26.1238 96.0416 52.7657 124.257C145.623 157.469 184.004 3.97314 63.054 3.97314Z"
+    ></path>
+  </svg>
+</a>
+
+<style is:global>
+  .contact__icon {
+    display: grid;
+    place-content: center;
+    width: clamp(70px, 18vw, 150px);
+    aspect-ratio: 1 / 0.93;
+    position: relative;
+  }
+  .contact__icon svg:first-child {
+    width: clamp(2rem, 8vw, 4rem);
+    aspect-ratio: 1;
+    background-color: black;
+    transition: scale var(--transition-03) cubic-bezier(1, -0.79, 0.71, 0.55);
+  }
+
+  .contact__icon:hover svg:first-child {
+    scale: 2;
+  }
+
+  .contact__icon-border {
+    position: absolute;
+    inset: 0;
+    stroke-width: 3;
+    transition: all var(--transition-03) ease-in-out;
+    stroke-dashoffset: -160;
+    stroke-dasharray: 67;
+  }
+  .contact__icon:hover .contact__icon-border {
+    stroke-width: 0;
+    stroke-dashoffset: -40;
+  }
+
+  @media (max-width: 559px) {
+    .contact__icon-border {
+      stroke-width: 4;
+    }
+  }
+</style>

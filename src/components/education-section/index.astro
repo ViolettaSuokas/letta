@@ -1,18 +1,46 @@
 ---
 import HeadingH2 from "@Components/heading-h2/index.astro";
 import Description from "@Components/description/index.astro";
-
+import Education from "./Education.astro";
+// Types
 import type { IEducations } from "@Types";
 interface Props {
   data: IEducations;
 }
-
-const { description, ...heading } = Astro.props.data;
+// Props
+const { description, educations, ...heading } = Astro.props.data;
 ---
 
-<section id="education" class="grid section">
+<section id="education" class="grid section educations">
   <HeadingH2 data={heading} />
   <Description data={description} />
+  <ul class="education__list">
+    {educations.map((work) => <Education data={work} />)}
+  </ul>
 </section>
 
-<style></style>
+<style>
+  .education__list {
+    grid-column: 3 / -3;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 360px));
+    gap: var(--gap-72) var(--gap-16);
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 1420px) {
+    .education__list {
+      justify-content: space-around;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    .education__list {
+      grid-column: 2 / -2;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .education__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

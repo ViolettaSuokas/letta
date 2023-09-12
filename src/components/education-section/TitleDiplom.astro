@@ -1,0 +1,35 @@
+---
+import type { StyleType, PartType } from "@Types";
+
+interface Props extends StyleType, PartType {
+  title: Array<string>;
+}
+
+const { title, style, part } = Astro.props;
+---
+
+<h3 class="edu__title color-white">
+  {
+    title[0].length > 0 ? (
+      title[0]
+    ) : (
+      <span class={`color-${style}`}>{part}</span>
+    )
+  }
+  {!title[0] ? null : <span class={`color-${style}`}>{part}</span>}
+  {title[1].length > 0 ? title[1] : null}
+</h3>
+
+<style>
+  .edu__title {
+    align-self: flex-end;
+    display: inline;
+    font-size: clamp(var(--font-24), 7vw, var(--font-28));
+    font-weight: 200;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .edu__title span {
+    font-weight: bold;
+  }
+</style>

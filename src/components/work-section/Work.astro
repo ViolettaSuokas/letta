@@ -25,6 +25,7 @@ const { data, index } = Astro.props;
     href={data.url}
     title={data.name}
     aria-label={data.name}
+    target="_blank"
   >
     {
       data.style.length > 0 ? (
@@ -72,6 +73,10 @@ const { data, index } = Astro.props;
     align-self: flex-end;
     position: relative;
     bottom: 16%;
+    transition: color var(--transition-03) ease-in-out;
+  }
+  .work:hover .work__name {
+    color: var(--text-white);
   }
 
   :global(.work__folder) {
@@ -88,14 +93,15 @@ const { data, index } = Astro.props;
 
   @media screen and (max-width: 800px) {
     .work {
-      --folder-size: clamp(320px, 45vw, 360px);
+      --folder-size: clamp(260px, 45vw, 360px);
+      padding-inline: clamp(var(--gap-56), 9vw, var(--gap-72));
     }
     .work__index {
-      font-size: clamp(var(--font-32), 4.5vw, var(--font-36));
+      font-size: clamp(var(--font-24), 4.5vw, var(--font-36));
     }
 
     .work__name {
-      font-size: clamp(var(--font-32), 4.5vw, var(--font-36));
+      font-size: clamp(var(--font-24), 4.5vw, var(--font-36));
     }
   }
 </style>

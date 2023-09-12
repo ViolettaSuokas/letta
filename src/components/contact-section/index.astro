@@ -1,18 +1,29 @@
 ---
 import HeadingH2 from "@Components/heading-h2/index.astro";
 import Description from "@Components/description/index.astro";
-
+import ContactUrl from "./ContactUrl.astro";
+// Types
 import type { IContacts } from "@Types";
 interface Props {
   data: IContacts;
 }
-
-const { description, ...heading } = Astro.props.data;
+// Props
+const { description, contacts, ...heading } = Astro.props.data;
 ---
 
 <section id="contact" class="grid section">
   <HeadingH2 data={heading} />
   <Description data={description} />
+  <div class="contact-icons">
+    {contacts.map((contact) => <ContactUrl data={contact} />)}
+  </div>
 </section>
 
-<style></style>
+<style>
+  .contact-icons {
+    grid-column: 2 /-2;
+    justify-self: center;
+    gap: clamp(var(--gap-12), 3vw, var(--gap-64));
+    display: flex;
+  }
+</style>
