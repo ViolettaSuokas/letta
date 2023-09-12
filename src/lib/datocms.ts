@@ -109,10 +109,15 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             style
             description
             educations {
-              style
-              title
-              part
-              description
+              ... on EmptyRecord {
+                isEmpty
+              }
+              ... on DiplomRecord {
+                part
+                style
+                title
+                description
+              }
             }
           }
 

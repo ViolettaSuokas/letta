@@ -53,7 +53,7 @@ export interface IWorks extends TitleType, PartType, StyleType, DescType {
 
 export interface IEducation extends TitleType, PartType, StyleType, DescType {}
 export interface IEducations extends TitleType, PartType, StyleType, DescType {
-  educations: Array<IEducation>;
+  educations: Array<IEducation | { isEmpty: boolean }>;
 }
 
 export interface IContact extends UrlType, StyleType {

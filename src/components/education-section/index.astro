@@ -22,9 +22,13 @@ const { description, educations, ...heading } = Astro.props.data;
 <style>
   .education__list {
     grid-column: 3 / -3;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fill, minmax(150px, 360px)); */
+    gap: var(--gap-96) var(--gap-16);
+    /* display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 360px));
-    gap: var(--gap-72) var(--gap-16);
+    gap: var(--gap-96) var(--gap-16); */
     justify-content: space-between;
   }
 

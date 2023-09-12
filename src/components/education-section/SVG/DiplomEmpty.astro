@@ -1,32 +1,25 @@
----
-interface Props {
-  style: string;
-}
-const { style } = Astro.props;
----
-
 <svg
-  class={`edu__diplom stroke-${style}`}
-  viewBox="0 0 330 413"
+  class="edu__diplom-empty"
+  viewBox="0 0 329 413"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden
 >
   <path
     d="M36.9963 69.9002C24.4688 74.0759 27.7609 55.8468 30.9728 46.2103L53.9329 44.7164M36.9963 69.9002C47.778 66.3064 50.7068 56.5135 53.9329 44.7164M36.9963 69.9002C36.9963 69.9002 117.455 60.8733 170.254 60.3496C223.19 59.8246 264.901 62.0236 307.599 67.193M36.9963 13.6864C4.07079 16.4971 4.07133 49.4051 4.07079 122.902C4.07027 195.496 1.66181 380.679 4.07073 394.331C6.47964 407.983 300.801 416.707 309.635 401.449C316.702 389.242 309.635 93.8827 307.599 67.193M36.9963 13.6864C71.4276 4.53925 275.075 -4.90151 309.635 13.6864C330.536 24.9283 333.085 60.1845 307.599 67.193M36.9963 13.6864C55.8178 12.0797 58.2381 28.9734 53.9329 44.7164"
-  ></path>
+    stroke-dasharray="12 12"></path>
 </svg>
-
 <style>
-  .edu__diplom {
-    position: absolute;
-    inset: 0;
+  .edu__diplom-empty {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    stroke: var(--color-purpul);
     stroke-width: 3;
-    z-index: -2;
   }
-  @media (max-width: 559px) {
-    .edu__diplom {
-      stroke-width: 2;
+  @media screen and (max-width: 800px) {
+    .edu__diplom-empty {
+      display: none;
     }
   }
 </style>
