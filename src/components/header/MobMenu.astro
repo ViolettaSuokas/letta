@@ -13,6 +13,7 @@ const { links } = Astro.props;
   const menu = document.querySelector(".nav__mob-menu") as HTMLDivElement;
   const nav = document.querySelector(".hero__pc-nav") as HTMLElement;
   const links = document.querySelector(".pc-nav__links") as HTMLUListElement;
+  let timeout: NodeJS.Timeout;
 
   function openNavigationMenu() {
     menu.classList.add("show");
@@ -28,8 +29,10 @@ const { links } = Astro.props;
       menu.classList.remove("show");
       // Keep removing the class from "body" to prevent strange
       // behavior in onAnimationEnd function
+      // onAnimationEnd event can't fired !?
+      // Using setTimeout
       document.body.classList.remove("body");
-      menu.addEventListener("animationend", onAnimationEnd);
+      timeout = setTimeout(onAnimationEnd, 500);
     }
   }
 
@@ -38,12 +41,12 @@ const { links } = Astro.props;
   function onAnimationEnd() {
     nav.classList.remove("mobile");
     menu.classList.remove("show-hide");
-    menu.removeEventListener("animationend", onAnimationEnd);
+    clearTimeout(timeout);
   }
 
   openMenu.addEventListener("click", openNavigationMenu);
-  closeMenu.addEventListener("click", closeNavigationMenu, true);
-  links.addEventListener("click", closeNavigationMenu, true);
+  closeMenu.addEventListener("click", closeNavigationMenu);
+  links.addEventListener("click", closeNavigationMenu);
 </script>
 
 <!-- HTML TEMPLATE -->
@@ -83,6 +86,7 @@ const { links } = Astro.props;
     z-index: 999;
   }
   .nav__mob-menu.show-hide {
+    display: grid;
     animation: hide-mob-menu 0.5s ease-in-out forwards;
   }
   .nav__mob-menu.show {

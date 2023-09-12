@@ -1,10 +1,9 @@
 ---
 import type { StyleType, PartType } from "@Types";
-
 interface Props extends StyleType, PartType {
   title: Array<string>;
 }
-
+// Props
 const { title, style, part } = Astro.props;
 ---
 
@@ -24,6 +23,8 @@ const { title, style, part } = Astro.props;
   .edu__title {
     align-self: flex-end;
     display: inline;
+    padding-inline: var(--gap-32) var(--gap-48);
+    padding-block-start: var(--gap-48);
     font-size: clamp(var(--font-24), 7vw, var(--font-28));
     font-weight: 200;
     line-height: 1.2;
@@ -31,5 +32,11 @@ const { title, style, part } = Astro.props;
   }
   .edu__title span {
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 800px) {
+    .edu__title {
+      padding-inline: var(--gap-24);
+    }
   }
 </style>

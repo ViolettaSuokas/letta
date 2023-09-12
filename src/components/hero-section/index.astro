@@ -20,10 +20,10 @@ const { links, hero } = Astro.props;
   <h1 class="hero__title color-light-grey">
     {hero.title}
   </h1>
-  <button class="hero__button color-white" type="button">
+  <a href="#work" class="hero__button color-white" type="button">
     {hero.name.split(hero.style)}
     <strong class="color-purpul">{hero.style}</strong>
-  </button>
+  </a>
   <CenterNavigation links={links.links} />
   <DaisyFlower />
 </section>
@@ -119,6 +119,9 @@ const { links, hero } = Astro.props;
   }
 
   @media (max-width: 559px) {
+    .hero {
+      grid-template-rows: 20vh repeat(3, min-content) 180px;
+    }
     .hero__daisy-flower {
       grid-column: 5;
       inline-size: 200px;
