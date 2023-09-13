@@ -75,7 +75,7 @@ textarea {
 
 main {
   display: grid;
-  row-gap: var(--gap-208);
+  /* row-gap: var(--gap-208); */
 }
 button {
   background-color: transparent;
@@ -149,6 +149,7 @@ button {
 
 .overflow {
   overflow: hidden;
+  padding-block: 208px 3rem;
 }
 
 /* MEDIA QUERIES */

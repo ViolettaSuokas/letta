@@ -37,12 +37,12 @@ const { links, hero } = Astro.props;
 
   .hero__title,
   .hero__button {
-    grid-column: 2 / 7;
     align-self: center;
     font-size: clamp(var(--font-18), 2.5vw, var(--font-36));
   }
 
   .hero__title {
+    grid-column: 3 / 8;
     grid-row: 3;
     padding-block: var(--gap-48) var(--gap-80);
     font-weight: 400;
@@ -50,6 +50,7 @@ const { links, hero } = Astro.props;
   }
 
   .hero__button {
+    grid-column: 2 / 8;
     grid-row: 4;
     justify-self: flex-start;
     padding-inline: var(--gap-24);

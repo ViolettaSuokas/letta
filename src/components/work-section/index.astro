@@ -13,7 +13,7 @@ interface Props {
 const { description, works, ...heading } = Astro.props.data;
 ---
 
-<section id="work" class="grid section">
+<section id="work" class="grid section overflow">
   <HeadingH2 data={heading} />
   <Description data={description} />
   <ul class="works__list">

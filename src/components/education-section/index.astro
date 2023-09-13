@@ -11,7 +11,7 @@ interface Props {
 const { description, educations, ...heading } = Astro.props.data;
 ---
 
-<section id="education" class="grid section educations">
+<section id="education" class="grid section educations overflow">
   <HeadingH2 data={heading} />
   <Description data={description} />
   <ul class="education__list">
@@ -24,11 +24,7 @@ const { description, educations, ...heading } = Astro.props.data;
     grid-column: 3 / -3;
     display: flex;
     flex-wrap: wrap;
-    /* grid-template-columns: repeat(auto-fill, minmax(150px, 360px)); */
     gap: var(--gap-96) var(--gap-16);
-    /* display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 360px));
-    gap: var(--gap-96) var(--gap-16); */
     justify-content: space-between;
   }
 

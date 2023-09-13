@@ -11,7 +11,7 @@ interface Props {
 const { description, contacts, ...heading } = Astro.props.data;
 ---
 
-<section id="contact" class="grid section">
+<section id="contact" class="grid section overflow">
   <HeadingH2 data={heading} />
   <Description data={description} />
   <div class="contact-icons">
