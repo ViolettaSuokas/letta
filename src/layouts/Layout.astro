@@ -14,9 +14,16 @@ import "@Styles/global.css";
     <meta name="viewport" content="width=device-width" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
 
+    <link rel="alternate" href="https://www.letta.fi" hreflang="fi" />
+    <link rel="alternate" href="https://www.letta.fi/en/" hreflang="en" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta name="googlebot" content="index, follow" />
+    <meta name="robots" content="index, follow" />
+
+    <meta name="generator" content={Astro.generator} />
+    <meta name="rating" content="General" />
   </head>
   <body>
     <slot />

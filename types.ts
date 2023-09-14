@@ -9,7 +9,6 @@ export type StyleType = { style: string };
 export type UrlType = { url: string };
 export type HandlerType = { handler: () => void };
 
-export type TypeFavIcon = Omit<TypeResponsiveImage, "responsiveImage">;
 export type TypeResponsiveImage = {
   alt: string;
   responsiveImage: {
@@ -29,8 +28,9 @@ export interface INavigation {
 
 interface ISEO {
   globalSeo: {
-    fallbackSeo: IArticle & TypeFavIcon;
+    fallbackSeo: IArticle;
   };
+  favicon: UrlType;
 }
 
 export interface IHero extends TitleType, NameType, StyleType {}

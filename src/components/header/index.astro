@@ -1,6 +1,7 @@
 ---
 import CircleBorder from "@SVG/CircleBorder.astro";
 import MobMenu from "@Components/header/MobMenu.astro";
+import Logo from "./SVG/Logo.astro";
 // Helper function
 import { getLangFromUrl } from "@Utils/defaultLang.ts";
 // Types
@@ -16,7 +17,7 @@ const lang = getLangFromUrl(Astro.url);
 
 <header class="grid header">
   <a href="/" class="nav__logo color-white">
-    <img src="/logo.svg" alt="logo" />
+    <Logo />
   </a>
   <nav
     class="header__nav"

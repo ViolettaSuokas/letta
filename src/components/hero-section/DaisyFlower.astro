@@ -12,7 +12,6 @@ import DaisyFlowerLeafs from "./SVG/DaisyFlowerLeafs.astro";
   .header__daisy-flower {
     inline-size: clamp(180px, 35vw, 320px);
     aspect-ratio: 1;
-    /* grid-row: 4 / 2 span; */
     grid-column: 4 span / -1;
     justify-self: flex-end;
     align-self: flex-end;
@@ -43,18 +42,10 @@ import DaisyFlowerLeafs from "./SVG/DaisyFlowerLeafs.astro";
       grid-column: 10 / span 4;
     }
   }
-  @media screen and (max-width: 960px) {
-    .header__daisy-flower {
-      /* inline-size: clamp(180px, 35vw, 300px); */
-      /* right: -10%; */
-    }
-  }
 
   @media (max-width: 559px) {
     .header__daisy-flower {
       grid-row: 5;
-      /* inline-size: clamp(180px, 50vw, 300px); */
-      /* right: -15%; */
     }
   }
 

@@ -15,7 +15,11 @@ interface Props {
 const { url, style, icon } = Astro.props.data;
 ---
 
-<a href={url} class={`contact__icon stroke-${style}`}>
+<a
+  href={url.includes("@") ? `mailto:${url}` : url}
+  target="_blank"
+  class={`contact__icon stroke-${style}`}
+>
   {icon === "email" ? <EmailIcon style={style} /> : null}
   {icon === "behance" ? <BehanceIcon style={style} /> : null}
   {icon === "linkedin" ? <LinkedInIcon style={style} /> : null}

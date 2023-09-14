@@ -1,1 +1,60 @@
-<meta http-equiv="refresh" content="0;url=/fi/" />
+---
+import Layout from "@Layouts/Layout.astro";
+import Header from "@Components/header/index.astro";
+import HeroSection from "@Components/hero-section/index.astro";
+import AboutSection from "@Components/about-section/index.astro";
+import ServicesSection from "@Components/services-section/index.astro";
+import WorkSection from "@Components/work-section/index.astro";
+import EducationSection from "@Components/education-section/index.astro";
+import ContactSection from "@Components/contact-section/index.astro";
+import Footer from "@Components/footer/index.astro";
+import { getLangFromUrl } from "@Utils/defaultLang.ts";
+
+// Example: Construct a canonical URL using your production domain
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const lang = getLangFromUrl(Astro.url);
+
+import FetchFromDatoCMS from "@Lib/datocms.ts";
+const data = await FetchFromDatoCMS(lang);
+
+// LOCAL DATA!!!
+// Remove CACHE folder to get updated data!!!
+// import LocaleData from "@Lib/localdata";
+// const data = await LocaleData(lang);
+---
+
+<!-- PAGE META TAGS -->
+<title>{data._site.globalSeo.fallbackSeo.title}</title>
+<meta
+  name="description"
+  content={data._site.globalSeo.fallbackSeo.description}
+/>
+<link rel="canonical" href={canonicalURL} />
+
+<meta property="og:title" content={data._site.globalSeo.fallbackSeo.title} />
+<meta
+  property="og:description"
+  content={data._site.globalSeo.fallbackSeo.description}
+/>
+<meta property="og:image" content={data._site.favicon.url} />
+<meta property="og:url" content="https://www.letta.fi" />
+
+<meta http-equiv="content-language" content="fi" />
+<meta name="geo.region" content="FI" />
+
+<!-- PAGE DOM ELEMENTS -->
+<Layout title="Welcome to Astro.">
+  <Header links={data.navigation} />
+  <main>
+    <HeroSection links={data.navigation} hero={data.heroSection} />
+    <AboutSection data={data.aboutSection} />
+    <ServicesSection data={data.servicesSection} />
+    <WorkSection data={data.workSection} />
+    <EducationSection data={data.educationSection} />
+    <ContactSection data={data.contactSection} />
+  </main>
+  <Footer />
+</Layout>
+
+<style></style>
