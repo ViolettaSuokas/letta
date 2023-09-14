@@ -78,11 +78,11 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             image {
               responsiveImage {
                 src
-                alt
-                width
-                height
                 srcSet
+                width
                 sizes
+                height
+                alt
               }
             }
           }
