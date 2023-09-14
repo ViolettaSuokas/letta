@@ -10,8 +10,10 @@ const { image, classExtra } = Astro.props;
 
 <img
   class={classExtra}
-  src={image.url}
-  alt={image.alt}
+  height={image.responsiveImage.height}
+  width={image.responsiveImage.width}
+  src={image.responsiveImage.src}
+  alt={image.responsiveImage.alt}
   srcset={image.responsiveImage.srcSet}
   sizes={image.responsiveImage.sizes}
 />

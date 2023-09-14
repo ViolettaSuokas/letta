@@ -10,12 +10,15 @@ export type UrlType = { url: string };
 export type HandlerType = { handler: () => void };
 
 export type TypeResponsiveImage = {
-  alt: string;
   responsiveImage: {
+    src: string;
+    alt: string;
+    width: string;
+    height: string;
     sizes: string;
     srcSet: string;
   };
-} & UrlType;
+};
 
 export interface IArticle extends TitleType, DescType {}
 

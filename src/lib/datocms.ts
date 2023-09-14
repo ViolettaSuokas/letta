@@ -75,6 +75,16 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
             part
             style
             description
+            image {
+              responsiveImage {
+                src
+                alt
+                width
+                height
+                srcSet
+                sizes
+              }
+            }
           }
 
           fragment ServicesSectionRecordFragment on ServicesSectionRecord {

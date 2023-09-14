@@ -19,6 +19,8 @@ const { url, style, icon } = Astro.props.data;
   href={url.includes("@") ? `mailto:${url}` : url}
   target="_blank"
   class={`contact__icon stroke-${style}`}
+  title={url}
+  aria-label={url}
 >
   {icon === "email" ? <EmailIcon style={style} /> : null}
   {icon === "behance" ? <BehanceIcon style={style} /> : null}

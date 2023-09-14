@@ -4,7 +4,7 @@ import Description from "@Components/description/index.astro";
 import Star from "./SVG/Star.astro";
 import ImageShape from "./SVG/ImageShape.astro";
 import TextShape from "./SVG/TextShape.astro";
-// import Img from "./Img.astro";
+import Img from "./Img.astro";
 // Types
 import type { IAbout } from "@Types";
 interface Props {
@@ -21,8 +21,8 @@ const { description, image, ...heading } = Astro.props.data;
     <Star className="big-star" />
     <Star className="middle-star" />
     <Star className="small-star" />
-    <!-- <Img image={image} classExtra="about__photo" /> -->
-    <img class="about__photo" src="/photo.png" alt="Violetta" />
+    <Img image={image} classExtra="about__photo" />
+    <!-- <img class="about__photo" src="/photo.png" alt="Violetta" /> -->
   </div>
   <TextShape />
   <ImageShape />
@@ -71,7 +71,7 @@ const { description, image, ...heading } = Astro.props.data;
     transform: translate(-4rem, -3rem);
   }
 
-  .about__photo {
+  :global(.about__photo) {
     width: 100%;
     object-fit: cover;
     position: relative;
