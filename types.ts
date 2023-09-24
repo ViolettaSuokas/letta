@@ -31,7 +31,7 @@ export interface INavigation {
 
 interface ISEO {
   globalSeo: {
-    fallbackSeo: IArticle;
+    fallbackSeo: IArticle & { image: UrlType };
   };
   favicon: UrlType;
 }

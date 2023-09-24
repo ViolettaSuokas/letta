@@ -48,6 +48,9 @@ export default async function FetchFromDatoCMS(lang: LanguagesType) {
               fallbackSeo {
                 description
                 title
+                image {
+                  url
+                }
               }
             }
             favicon {

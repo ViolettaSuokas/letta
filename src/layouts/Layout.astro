@@ -28,10 +28,15 @@ import "@Styles/global.css";
 
     <meta name="generator" content={Astro.generator} />
     <meta name="rating" content="General" />
+
+    <meta name="geo.region" content="FI" />
+
     <meta
       name="google-site-verification"
       content="H0uSTqaKvyYCig_6IA0D_Le4q6K8__tuSDHhYWX6htM"
     />
+
+    <slot name="head" />
   </head>
   <body>
     <slot />

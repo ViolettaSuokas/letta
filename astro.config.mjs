@@ -5,8 +5,6 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.letta.fi",
-  // site: 'https://jnetc.github.io',
-  // base: '/letta',
   server: { host: true },
   compressHTML: true,
   output: "server",
@@ -14,10 +12,6 @@ export default defineConfig({
   build: {
     inlineStylesheets: `always`,
   },
-  // image: {
-  // Example: Allow remote image optimization from a single domain
-  //   domains: ['www.datocms-assets.com'],
-  // },
   integrations: [
     sitemap({
       changefreq: "monthly",

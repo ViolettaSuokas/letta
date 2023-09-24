@@ -1,5 +1,6 @@
 ---
 import Layout from "@Layouts/Layout.astro";
+import JSONLD from "@Components/JSONLD.astro";
 import Header from "@Components/header/index.astro";
 import HeroSection from "@Components/hero-section/index.astro";
 import AboutSection from "@Components/about-section/index.astro";
@@ -22,6 +23,13 @@ const data = await FetchFromDatoCMS(lang);
 // Remove CACHE folder to get updated data!!!
 // import LocaleData from "@Lib/localdata";
 // const data = await LocaleData(lang);
+
+const schema = {
+  title: data._site.globalSeo.fallbackSeo.title,
+  description: data._site.globalSeo.fallbackSeo.description,
+  url: "https://www.letta.fi",
+  image: data._site.globalSeo.fallbackSeo.image.url,
+};
 ---
 
 <!-- PAGE META TAGS -->
@@ -37,14 +45,17 @@ const data = await FetchFromDatoCMS(lang);
   property="og:description"
   content={data._site.globalSeo.fallbackSeo.description}
 />
-<meta property="og:image" content={data._site.favicon.url} />
+<meta
+  property="og:image"
+  content={data._site.globalSeo.fallbackSeo.image.url}
+/>
 <meta property="og:url" content="https://www.letta.fi" />
 
 <meta http-equiv="content-language" content="fi" />
-<meta name="geo.region" content="FI" />
 
 <!-- PAGE DOM ELEMENTS -->
 <Layout title="Welcome to Astro.">
+  <JSONLD slot="head" {...schema} />
   <Header links={data.navigation} />
   <main>
     <HeroSection links={data.navigation} hero={data.heroSection} />
